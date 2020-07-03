@@ -3,8 +3,8 @@ import './App.css';
 
 
 //import Login from './components/Login.js';
-import RegisterAcc from './components/RegisterAcc.js';
-//import ForgotPassword from './components/ForgotPassword.js';
+//import RegisterAcc from './components/RegisterAcc.js';
+import ForgotPassword from './components/ForgotPassword.js';
 
 function App() {
   //rce for components
@@ -20,7 +20,7 @@ function App() {
 
   return (
     //<div className="App">
-      <RegisterAcc/>
+      <ForgotPassword/>
     //</div>
   );
 }
