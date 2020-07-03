@@ -1,21 +1,14 @@
 #wrapper {
-    position: absolute;
     border-radius: 25px;
     border-style: solid;
     border-color: lightgray;
-    /*box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);*/
     width: 600px;
-    height: 500px;
-    transform: scale(1.5, 1.5);
-    /*margin: auto;*/
+    height: 550px;
 
-    margin-left: auto;
-    margin-right: auto;
-
-    top: 200px;
-    left: 650px;
-
-    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(90%, 90%);
 }
 
 #title {
@@ -55,18 +48,17 @@
 
 #firebaseui-auth-container{
     position: relative;
-    right: 95px;
+    right: 16%;
 }
 
 .firebaseui-idp-button.mdl-button.mdl-js-button.mdl-button--raised.firebaseui-idp-facebook.firebaseui-id-idp-button{
     border-radius: 25px !important;
-    margin-left: 20px;
+    margin: 0 0 0 20px;
 }
 
 .firebaseui-idp-button.mdl-button.mdl-js-button.mdl-button--raised.firebaseui-idp-google.firebaseui-id-idp-button
 {
     border-radius: 25px !important;
-    margin-right: 20px;
 }
 .firebaseui-idp-list{
     width: 500px !important;
@@ -82,7 +74,7 @@
     position: absolute;
 	width:400px;
     text-align:center;
-    left: 79px;
+    left: 47px;
     color: gray;
 }
 
@@ -103,6 +95,11 @@
 }
 
 /*Set up Register fields*/
+#formWrapper{
+    position: relative;
+    left: 30px;
+}
+
 
 #nameWrapper{
     position: relative;
@@ -126,10 +123,33 @@
 
 #verifyWrapper{
     position: relative;
-    right:75px;
+    left:19px;
 }
 
 #next{
     position: relative;
-    left: 70px;
+    left: 230px;
+}
+
+/*======== CSS for portrait style on mobile ============= */
+
+@media screen and (orientation:portrait) and (max-width: 414px){
+    
+    #wrapper {
+        border-radius: 25px;
+        border-style: solid;
+        border-color: lightgray;
+        width: 600px;
+        height: 550px;
+    
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(65%, 65%);
+    }
+
+    #firebaseui-auth-container{
+        position: relative;
+        left: 4%;
+    }
 }

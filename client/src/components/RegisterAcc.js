@@ -47,7 +47,6 @@ export class RegisterAcc extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.toggleButton = this.toggleButton.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.updateButtons = this.updateButtons.bind(this);
     }
     /** 
      * Update the state variables whenever new data is entered into the input fields
@@ -68,9 +67,7 @@ export class RegisterAcc extends Component {
     {
         this.setState({username: event.target.value});
         let username = document.getElementById("username").value;
-        let foundUsername = false;
         let self = this;
-        let e = event.target;
 
         //Check user name already taken
         db.collection("Users").where("username", "==", username)
@@ -109,15 +106,6 @@ export class RegisterAcc extends Component {
         this.setState({email: event.target.value});
     }
 
-    updateButtons()
-    {
-        setTimeout(function () {
-            var sign_in_buttons = document.getElementsByClassName("firebaseui-idp-text firebaseui-idp-text-long");
-            sign_in_buttons[0].innerHTML = "Continue with Google";
-            sign_in_buttons[1].innerHTML = "Continue with Facebook";
-        })
-    }
-
     //Handle when the submit button is clicked
     handleSubmit(event){
         //Prevent page reload
@@ -136,8 +124,6 @@ export class RegisterAcc extends Component {
         //Password requirements met, get verification
         else
         {
-            var email = this.state.email;
-            var password = this.state.password;
             let self = this;
 
             event.preventDefault();
@@ -148,8 +134,6 @@ export class RegisterAcc extends Component {
             })
             .catch(function(error) {
                 // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
                 console.log("Email and password not properly autenticated! error: " + error);
             });
 
@@ -419,134 +403,136 @@ export class RegisterAcc extends Component {
                 <div className="divider">
                     <hr className="left" />or<hr className="right" />
                 </div>
+                {
+                    //form
+                }
                 <p style = {{paddingTop: "10px"}}></p>
                 <form onSubmit = {this.handleSubmit}>
-                    <div id = "nameWrapper">
-                        <label style={{paddingRight: '40px'}} id = "firstName">
+                    <div id = "formWrapper">
+                        <div id = "nameWrapper">
+                            <label style={{paddingRight: '40px'}} id = "firstName">
+                                    <TextField
+                                        onChange={this.handleFirstnameChange}
+                                        label="First name"
+                                        style={{width: '150px'}}
+                                        value = {this.state.first}
+                                        required = {true}
+                                    />
+                                
+                            </label>
+                            <label style={{paddingRight: '40px'}}  id = "middleName">
+                                    <TextField
+                                        onChange={this.handleMiddlenameChange}
+                                        label="Middle initial"
+                                        style={{width: '100px'}}
+                                        value = {this.state.middle}
+                                    />
+                                
+                            </label>
+                            <label style={{paddingRight: '40px'}}  id = "lastName">
+                                    <TextField
+                                        onChange={this.handleLastnameChange}
+                                        label="Last name"
+                                        style={{width: '150px'}}
+                                        value = {this.state.last}
+                                        required = {true}
+                                    />
+                                
+                            </label>
+                        </div>
+                        
+                        <div id = "verifyWrapper">
+                            <label style={{paddingRight: '39px'}} id = "email">
                                 <TextField
-                                    onChange={this.handleFirstnameChange}
-                                    label="First name"
-                                    style={{width: '150px'}}
-                                    value = {this.state.first}
+                                    type="text"
+                                    onChange = {this.handleEmailChange}
+                                    label="Email"
+                                    style={{width: '290px'}}
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                    value = {this.state.email}
                                     required = {true}
                                 />
-                            
-                        </label>
-                        <label style={{paddingRight: '40px'}}  id = "middleName">
+                            </label>
+                            <br></br>
+                            <label style={{paddingRight: '39px'}}>
                                 <TextField
-                                    onChange={this.handleMiddlenameChange}
-                                    label="Middle initial"
-                                    style={{width: '100px'}}
-                                    value = {this.state.middle}
-                                />
-                            
-                        </label>
-                        <label style={{paddingRight: '40px'}}  id = "lastName">
-                                <TextField
-                                    onChange={this.handleLastnameChange}
-                                    label="Last name"
-                                    style={{width: '150px'}}
-                                    value = {this.state.last}
+                                    onChange={this.handleUsernameChange}
+                                    label="Username"
+                                    id = "username"
+                                    style={{width: '290px'}}
+                                    value = {this.state.username}
                                     required = {true}
+                                    error = {this.state.usedUsername}
+                                    helperText = {this.state.usedUsername ? "Username taken!" : ""}
                                 />
-                            
-                        </label>
-                    </div>
-                    
-                    <div id = "verifyWrapper">
-                        <label style={{paddingRight: '39px'}} id = "email">
-                            <TextField
-                                type="text"
-                                onChange = {this.handleEmailChange}
-                                label="Email"
-                                style={{width: '290px'}}
-                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                                value = {this.state.email}
-                                required = {true}
-                            />
-                        </label>
-                        <br></br>
-                        <label style={{paddingRight: '39px'}}>
-                            <TextField
-                                onChange={this.handleUsernameChange}
-                                label="Username"
-                                id = "username"
-                                style={{width: '290px'}}
-                                value = {this.state.username}
-                                required = {true}
-                                error = {this.state.usedUsername}
-                                helperText = {this.state.usedUsername ? "Username taken!" : ""}
-                            />
-                            
-                        </label>
-                        <br></br>
-                        <p></p>
-                        <label style={{paddingRight: '6px'}}> 
-                            <CustomTooltip 
-                                placement="bottom"
-                                title={
-                                <React.Fragment>
-                                    <span style = {{color: 'Black', fontSize: '15px'}} id = "requirements">Password requirements: </span>
-                                    <br></br>
-                                    <span style = {{color: this.checkLength(this.state.password) ? 'green' : 'firebrick', fontSize: '15px'}} id = "minimum"> Minimum 8 characters: </span>
-                                    <br></br>
-                                    <span style = {{color: this.checkUpper(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "upper"> At least one uppercase letter [A-Z]: </span>
-                                    <br></br>
-                                    <span style = {{color: this.checkLower(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "lower"> At least one lowercase letter [a-z] </span>
-                                    <br></br>
-                                    <span style = {{color: this.checkNumeral(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "numeral"> At least one numeral [0-9] </span>
-                                    <br></br>
-                                    <span style = {{color: this.checkSymbol(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "symbol"> At least one symbol [!@#$%^&*()+_,.{}?-] </span>
+                                
+                            </label>
+                            <br></br>
+                            <p></p>
+                            <label style={{paddingRight: '6px'}}> 
+                                <CustomTooltip 
+                                    placement="bottom"
+                                    title={
+                                    <React.Fragment>
+                                        <span style = {{color: 'Black', fontSize: '15px'}} id = "requirements">Password requirements: </span>
+                                        <br></br>
+                                        <span style = {{color: this.checkLength(this.state.password) ? 'green' : 'firebrick', fontSize: '15px'}} id = "minimum"> Minimum 8 characters: </span>
+                                        <br></br>
+                                        <span style = {{color: this.checkUpper(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "upper"> At least one uppercase letter [A-Z]: </span>
+                                        <br></br>
+                                        <span style = {{color: this.checkLower(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "lower"> At least one lowercase letter [a-z] </span>
+                                        <br></br>
+                                        <span style = {{color: this.checkNumeral(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "numeral"> At least one numeral [0-9] </span>
+                                        <br></br>
+                                        <span style = {{color: this.checkSymbol(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "symbol"> At least one symbol [!@#$%^&*()+_,.{}?-] </span>
 
-                                </React.Fragment>}
+                                    </React.Fragment>}
+                                >
+                                    <TextField
+                                        type="password"
+                                        id = "showPass"
+                                        onChange = {this.handlePasswordChange}
+                                        label="Password"
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+_,.{}?-]).{8,}"
+                                        style={{width: '290px'}}
+                                        value = {this.state.password}
+                                        required = {true}
+                                        
+                                    />
+                                </CustomTooltip>
+                            </label>
+                            
+                            <label>
+                            <IconButton aria-label="Show Password" 
+                                onClick= {this.toggleButton}                        
+                                edge="end"
+
                             >
+                            {this.state.check ? <VisibilityIcon/> : <VisibilityOffIcon/>}
+                            </IconButton>
+                            </label>
+
+                            <label style={{paddingRight: '39px'}}>
                                 <TextField
                                     type="password"
-                                    id = "showPass"
-                                    onChange = {this.handlePasswordChange}
-                                    label="Password"
-                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+_,.{}?-]).{8,}"
+                                    id = "confirmPass"
+                                    onChange = {this.handleRePasswordChange}
+                                    label="Confirm password"
                                     style={{width: '290px'}}
-                                    value = {this.state.password}
+                                    value = {this.state.repassword}
                                     required = {true}
-                                    
                                 />
-                            </CustomTooltip>
-                        </label>
-                        
-                        <label>
-                        <IconButton aria-label="Show Password" 
-                            onClick= {this.toggleButton}                        
-                            edge="end"
 
-                        >
-                        {this.state.check ? <VisibilityIcon/> : <VisibilityOffIcon/>}
-                        </IconButton>
-                        </label>
-
-                        <label style={{paddingRight: '39px'}}>
-                            <TextField
-                                type="password"
-                                id = "confirmPass"
-                                onChange = {this.handleRePasswordChange}
-                                label="Confirm password"
-                                style={{width: '290px'}}
-                                value = {this.state.repassword}
-                                required = {true}
-                            />
-
-                        </label>
-                        <br></br><br></br>
-                        <Button variant="contained" color="secondary" type = "submit" id = "next">
-                            Next
-                        </Button>
+                            </label>
+                            <br></br><br></br>
+                            <Button variant="contained" color="secondary" type = "submit" id = "next">
+                                Next
+                            </Button>
+                        </div>
                     </div>
                 </form>
             </div>
         )
-    }
-    componentDidMount() {
-        this.updateButtons();
     }
 }
 

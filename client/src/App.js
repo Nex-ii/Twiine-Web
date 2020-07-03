@@ -2,11 +2,9 @@ import React from 'react';
 import './App.css';
 
 
-import Login from './components/Login.js';
-//import RegisterAcc from './components/RegisterAcc.js';
+//import Login from './components/Login.js';
+import RegisterAcc from './components/RegisterAcc.js';
 //import ForgotPassword from './components/ForgotPassword.js';
-//import AboutBusiness2 from './components/AboutBusiness2.js';
-//import AboutBusiness3 from './components/AboutBusiness3.js';
 
 function App() {
   //rce for components
@@ -21,9 +19,9 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Login/>
-    </div>
+    //<div className="App">
+      <RegisterAcc/>
+    //</div>
   );
 }
 

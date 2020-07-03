@@ -172,78 +172,78 @@ export class Login extends Component {
                     //Google and facebook button
                 }
                 <form onSubmit = {this.handleSubmit} id = "form">
-                <div id="firebaseui-auth-container"></div>
+                    <div id="firebaseui-auth-container"></div>
 
-                {
-                    //Divider
-                }
-                <div className="divider">
-                    <hr className="left"/>or<hr className="right" />
-                </div>
-
-                <br></br>
-                
-                <div id = "infoField">
                     {
-                        //Username login
+                        //Divider
                     }
-                    <label style={{paddingRight: '40px'}} id = "username" >
-                        <TextField
-                            onChange={this.handleUsernameChange}
-                            label="Username/Email"
-                            style={{width: '200px'}}
-                            value = {this.state.username}
-                            required = {true}
-                        />
-                        
-                    </label>
-                    <br></br>
-                    <label id = "password">
-                        <TextField
-                            type="password"
-                            id = "showPass"
-                            onChange = {this.handlePasswordChange}
-                            label="Password"
-                            style={{width: '200px'}}
-                            value = {this.state.password}
-                            required = {true}
-                        />
-                    </label>
-                    <label>
-                    <IconButton aria-label="Show Password" 
-                        onClick= {this.toggleButton}
-                        style = {{position: 'relative', left: '70px'}}                        
-                        edge="end"
-                    >
-                    {this.state.check ? 
-                    <VisibilityIcon /> : <VisibilityOffIcon/>}
-                    </IconButton>
+                    <div className="divider">
+                        <hr className="left"/>or<hr className="right" />
+                    </div>
 
-                    </label>
                     <br></br>
-                    {
-                        //Forgot password
-                    }
-                    <a href="https://google.com/" id = "forgotPass">Forgot Password?</a>
                     
-                    <br></br><br></br>
-                    <Button id = "login" type = "submit">
-                        Sign in
-                    </Button>
-                    {
-                        /*
-                        <Button id = "logout" type = "submit" onClick = {this.logout}>
-                            Logout
+                    <div id = "infoField">
+                        {
+                            //Username login
+                        }
+                        <label style={{paddingRight: '40px'}} id = "username" >
+                            <TextField
+                                onChange={this.handleUsernameChange}
+                                label="Username/Email"
+                                style={{width: '200px'}}
+                                value = {this.state.username}
+                                required = {true}
+                            />
+                            
+                        </label>
+                        <br></br>
+                        <label id = "password">
+                            <TextField
+                                type="password"
+                                id = "showPass"
+                                onChange = {this.handlePasswordChange}
+                                label="Password"
+                                style={{width: '200px'}}
+                                value = {this.state.password}
+                                required = {true}
+                            />
+                        </label>
+                        <label>
+                        <IconButton aria-label="Show Password" 
+                            onClick= {this.toggleButton}
+                            style = {{position: 'relative', left: '70px'}}                        
+                            edge="end"
+                        >
+                        {this.state.check ? 
+                        <VisibilityIcon /> : <VisibilityOffIcon/>}
+                        </IconButton>
+
+                        </label>
+                        <br></br>
+                        {
+                            //Forgot password
+                        }
+                        <a href="https://google.com/" id = "forgotPass">Forgot Password?</a>
+                        
+                        <br></br><br></br>
+                        <Button id = "login" type = "submit">
+                            Sign in
                         </Button>
-                        */
-                    }
-                    <br></br>
-                    {
-                        //sign up
-                    }
-                    <span id = "notMember">Not a member?</span>
-                    <a href="https://google.com/" id = "signup" > Sign up</a>
-                   </div> 
+                        {
+                            /*
+                            <Button id = "logout" type = "submit" onClick = {this.logout}>
+                                Logout
+                            </Button>
+                            */
+                        }
+                        <br></br>
+                        {
+                            //sign up
+                        }
+                        <span id = "notMember">Not a member?</span>
+                        <a href="https://google.com/" id = "signup" > Sign up</a>
+                    </div> 
                 
                 </form>
                 
