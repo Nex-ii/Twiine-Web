@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import Button from 'react-mdl/lib/Button';
-import {db, firebase} from '../database'
+import {firebase} from '../database'
 import '../CSS/ForgotPassword.css'
 import TextField from '@material-ui/core/TextField';
 
 export class ForgotPassword extends Component {
 
     //Add a confirm changes in the future to make sure businesses did not mispell
-
+    /**
+     * constructor - set up the properties
+     * @param {*} props - the properties of the component class
+     */
     constructor(props)
     {
         super(props);
@@ -15,58 +18,56 @@ export class ForgotPassword extends Component {
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    /**
+     * handleEmailChange - change the value of the email state when a new value is entered into the email field
+     * @param {*} event - the event of when a user enters characters into the email field
+     */
     handleEmailChange(event)
     {
         this.setState({email: event.target.value});
     }
 
+    /**
+     * handleSubmit - handle sending the email to reset the password to the user.
+     * @param {*} event - when the submit button is clicked
+     */
 
-    handleSubmit(event){
-        //Add to the database
+    async handleSubmit(event){
         alert("made!");
         event.preventDefault();
-        var auth = firebase.auth();
-        let self = this;
 
-        
-        db.collection("Users").where("email", "==", this.state.email)
-        .get()
-        .then(function(querySnapshot) {
-            if(querySnapshot.empty)
-            {
+        var checkEmail = firebase.functions().httpsCallable('userExists');
+        var foundEmail = await checkEmail({left_data_field: "email", right_userdata: this.state.email});
+
+        console.log(foundEmail.data.found);
+
+        if(foundEmail.data.found != undefined)
+        {
+            //reset via email if email is found in database
+            //Leads to a verification page
+            //Password Reset
+            firebase.auth().sendPasswordResetEmail(foundEmail.data.found.email).then(function() {
+                 // Email sent.
+                 let emailDiv =  document.getElementById("emailMessage");
+                 emailDiv.innerHTML = "A password reset link has been sent to your email!";
+                 emailDiv.style.color = "green";
+                 emailDiv.style.visibility = 'visible';
+            })
+            .catch(function(error) {
+                //An error happened
                 let emailDiv =  document.getElementById("emailMessage");
-                emailDiv.innerHTML = "Error: Email is not registered!";
+                emailDiv.innerHTML = "Password reset email failed! Email does not exist!";
                 emailDiv.style.color = "red";
                 emailDiv.style.visibility = 'visible';
-            }
-
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                
-                //reset via email if email is found in database
-                //Leads to a verification page
-                //Password Reset
-                auth.sendPasswordResetEmail(self.state.email).then(function() {
-                    // Email sent.
-                    let emailDiv =  document.getElementById("emailMessage");
-                    emailDiv.innerHTML = "A password reset link has been sent to your email!";
-                    emailDiv.style.color = "green";
-                    emailDiv.style.visibility = 'visible';
-                    
-                }).catch(function(error) {
-                    // An error happened.
-                    console.log("could not send email: " + error);
-                    let emailDiv =  document.getElementById("emailMessage");
-                    emailDiv.innerHTML = "Password reset email failed! " + error;
-                    emailDiv.style.color = "red";
-                    emailDiv.style.visibility = 'visible';
-                });
             });
-        })
-        .catch(function(error) {
-            console.log("Error getting documents: ", error);
-        });
+        }
+        else
+        {
+            let emailDiv =  document.getElementById("emailMessage");
+            emailDiv.innerHTML = "Error: Email is not registered!";
+            emailDiv.style.color = "red";
+            emailDiv.style.visibility = 'visible';
+        }
         
     }
 

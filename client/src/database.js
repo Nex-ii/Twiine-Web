@@ -17,6 +17,8 @@ var firebaseConfig = {
   //require("firebase/firestore");
   var firebase = require('firebase');
   var firebaseui = require('firebaseui');
+  require("firebase/functions");
+
 
 
   // Initialize Firebase
@@ -54,6 +56,8 @@ var firebaseConfig = {
   
 
   const db = firebase.firestore();
+  var functions = firebase.functions();
 
 
-  export {db, firebase};
+
+  export {db, firebase, functions};

@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import '../CSS/RegisterAcc.css'
-//import Button from 'react-mdl/lib/Button';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import IconButton from '@material-ui/core/IconButton';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
 import {db, firebase} from '../database';
 import TextField from '@material-ui/core/TextField';
-import Tooltip from '@material-ui/core/Tooltip';
-//import customToolTip from '../CSS/RegisterAccCSS.js';
-import { withStyles} from '@material-ui/core/styles';
+import {CustomTooltip} from '../CSS/RegisterAccCSS.js';
 
 /*TODO:
     - Check for username taken 
@@ -19,17 +16,6 @@ import { withStyles} from '@material-ui/core/styles';
 */
 
 
-const CustomTooltip = withStyles((theme) => ({
-    tooltip: {
-      backgroundColor: 'white',
-      color: 'rgba(0, 0, 0, 0.87)',
-      maxWidth: 250,
-      fontSize: theme.typography.pxToRem(12),
-      border: '1px solid #dadde9',
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      borderRadius: '15px',
-    },
-  }))(Tooltip);
 
 
 export class RegisterAcc extends Component {
@@ -41,7 +27,7 @@ export class RegisterAcc extends Component {
         this.handleFirstnameChange = this.handleFirstnameChange.bind(this);
         this.handleMiddlenameChange = this.handleMiddlenameChange.bind(this);
         this.handleLastnameChange = this.handleLastnameChange.bind(this);
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
+        this.handleUsernameChange = this.handleUsernameChange.bind(this); 
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleRePasswordChange = this.handleRePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -139,92 +125,42 @@ export class RegisterAcc extends Component {
 
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
+                  user.updateProfile({
+                      displayName: self.state.username
+                  })
                   // User is signed in.
                   console.log("user signed in");
                 
-                  /*
-                  //firebase Passing State in Email Actions to get back to where they were on the website
-                  var actionCodeSettings = {
-                    url: 'https://www.example.com/?email=' + firebase.auth().currentUser.email,
-                    iOS: {
-                      bundleId: 'com.example.ios'
-                    },
-                    android: {
-                      packageName: 'com.example.android',
-                      installApp: true,
-                      minimumVersion: '12'
-                    },
-                    handleCodeInApp: true,
-                    // When multiple custom dynamic link domains are defined, specify which
-                    // one to use.
-                    dynamicLinkDomain: "example.page.link"
-                  };
-                  */
+                  
                   user.sendEmailVerification()
                    .then(function() {
                     
                     console.log("Successfully sent email");
 
                     //Save the username, if they don't verify within certain time frame then delete it
-                    
-
-                    let data = {
-                        email: self.state.email,
-                        username: self.state.username
+                    let userData = {
+                        name: self.state.middle == '' ? self.state.first + ' ' + self.state.last : self.state.first + ' ' + self.state.middle + ' ' + self.state.last,
                     }
 
-                    db.collection("Users").doc(user.uid).set(data);
+                    var makeUserDoc = firebase.functions().httpsCallable('createUserDoc');
+                    //makeUserDoc({data: userData, loggedIn: user})
+                    makeUserDoc({name: userData.name})
+                    .then(function() {
+                        console.log("called cloud function to create userdata");
+                    })
+                    .catch(function(error) {
+                        // Getting the Error details.
 
-                    }).catch(function(error) {
-                        // An error happened.
-                        console.log("failed to send email verification! error: " + error);
+                        // ...
+                        console.log("error calling cloud function: " + error);
                     });
-
-                    //Link email/password login to account
-                    /*
-                    var credential = firebase.auth.EmailAuthProvider.credential(email, password);
-                    firebase.auth().currentUser.linkWithCredential(credential)
-                    .then(function(usercred) {
-                        var user = usercred.user;
-                        console.log("Account linking success", user);
-                    }).catch(function(error) {
-                        console.log("Account linking error", error);
-                    });
-                    */
+                });
 
                 } else {
                   console.log("no users logged in");
                   // No user is signed in.
                 }
               });
-              
-            /*
-            //Sign in to the temporary user account
-            firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then(function(){
-                console.log("entered sign in with email and pass");
-            })
-            .catch(function(error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // ...
-                console.log("sign in failed! error: " + errorCode);
-            });
-            
-
-            var user = firebase.auth().currentUser; //Get the user
-            
-
-            //Send an email verification to the user
-            user.sendEmailVerification().then(function() {
-                // Email sent.
-                console.log("trying to send email");
-            }).catch(function(error) {
-                // An error happened.
-                console.log("failed to send email verification!");
-            });
-            */
             
             //Signs the user out
             firebase.auth().signOut().then(function() {
@@ -234,90 +170,8 @@ export class RegisterAcc extends Component {
                 // An error happened.
                 console.log("failed to signout!");
               });
-
+            
             //In the verification link we need to add a timeout to delete the user if the link expires
-
-
-           //var email = this.state.email;
-
-           //alert("successfully registered: " + email);
-
-            //For signing in using email
-           /*
-            //Create the verification email based on these settings
-            var actionCodeSettings = {
-                // URL you want to redirect back to. The domain (www.example.com) for this
-                // URL must be whitelisted in the Firebase Console.
-                url: 'http://localhost:3000/',
-                // This must be true.
-                handleCodeInApp: true,
-                iOS: {
-                bundleId: 'com.example.ios'
-                },
-                android: {
-                packageName: 'com.example.android',
-                installApp: true,
-                minimumVersion: '12'
-                },
-                //dynamicLinkDomain: 'example.page.link'
-            };
-            
-
-            
-            firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
-            .then(function() {
-                // The link was successfully sent. Inform the user.
-                // Save the email locally so you don't need to ask the user for it again
-                // if they open the link on the same device.
-                window.localStorage.setItem('emailForSignIn', email);
-            })
-            .catch(function(error) {
-                // Some error occurred, you can inspect the code: error.code
-                alert("There was a error sending the verification email to: " + email + " !\n" + "caught error: " + error);
-            });
-            */
-
-  
-
-            //!! remove later for now testing whether register and login will work !!
-            /*
-                db.collection("Businesses").add({
-                    zip: this.state.zip,
-                    name: this.state.name,
-                    industry: this.state.industry,
-                    address: this.state.address
-                });
-            */
-
-            /*
-            //Create the verification email based on these settings
-            var actionCodeSettings = {
-                // URL you want to redirect back to. The domain (www.example.com) for this
-                // URL must be whitelisted in the Firebase Console.
-                url: 'http://localhost:3000/',
-                // This must be true.
-                handleCodeInApp: true,
-                iOS: {
-                bundleId: 'com.example.ios'
-                },
-                android: {
-                packageName: 'com.example.android',
-                installApp: true,
-                minimumVersion: '12'
-                },
-                //dynamicLinkDomain: 'example.page.link'
-            };
-            */
-            //If we want the user to continue with the seesion we can do
-            /*
-                firebase.auth().currentUser.sendEmailVerification(actionCodeSettings)
-                .then(function() {
-                // Verification email sent.
-                })
-                .catch(function(error) {
-                // Error occurred. Inspect error.code.
-                });
-            */
         }
     }
 
@@ -379,9 +233,13 @@ export class RegisterAcc extends Component {
     toggleButton(event){
         this.forceUpdate();
         event.preventDefault();
+
+        this.state.check = !this.state.check;
+        /*
         this.setState((state) => {
             return {check:!state.check};
         });
+        */
         document.getElementById("showPass").type = this.state.check ? "text" : "password";
         document.getElementById("confirmPass").type = this.state.check ? "text" : "password";           
     }
@@ -390,7 +248,6 @@ export class RegisterAcc extends Component {
             <div id = "wrapper">
                 <div id = "title">Twiine</div>
                 <div id = "signInTitle">Sign in to Twiine</div>
-                <p style = {{paddingTop: "75px"}}></p>
 
                 {
                     //Google and facebook button
@@ -406,7 +263,6 @@ export class RegisterAcc extends Component {
                 {
                     //form
                 }
-                <p style = {{paddingTop: "10px"}}></p>
                 <form onSubmit = {this.handleSubmit}>
                     <div id = "formWrapper">
                         <div id = "nameWrapper">
@@ -442,7 +298,7 @@ export class RegisterAcc extends Component {
                         </div>
                         
                         <div id = "verifyWrapper">
-                            <label style={{paddingRight: '39px'}} id = "email">
+                            <label id = "email">
                                 <TextField
                                     type="text"
                                     onChange = {this.handleEmailChange}
@@ -454,7 +310,7 @@ export class RegisterAcc extends Component {
                                 />
                             </label>
                             <br></br>
-                            <label style={{paddingRight: '39px'}}>
+                            <label >
                                 <TextField
                                     onChange={this.handleUsernameChange}
                                     label="Username"
@@ -468,7 +324,6 @@ export class RegisterAcc extends Component {
                                 
                             </label>
                             <br></br>
-                            <p></p>
                             <label style={{paddingRight: '6px'}}> 
                                 <CustomTooltip 
                                     placement="bottom"
@@ -512,7 +367,7 @@ export class RegisterAcc extends Component {
                             </IconButton>
                             </label>
 
-                            <label style={{paddingRight: '39px'}}>
+                            <label >
                                 <TextField
                                     type="password"
                                     id = "confirmPass"
@@ -525,11 +380,11 @@ export class RegisterAcc extends Component {
 
                             </label>
                             <br></br><br></br>
-                            <Button variant="contained" color="secondary" type = "submit" id = "next">
-                                Next
-                            </Button>
                         </div>
                     </div>
+                    <Button variant="contained" color="secondary" type = "submit" id = "next">
+                                Next
+                    </Button>
                 </form>
             </div>
         )

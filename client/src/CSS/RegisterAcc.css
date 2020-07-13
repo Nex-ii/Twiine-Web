@@ -5,23 +5,14 @@
     width: 600px;
     height: 550px;
 
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(90%, 90%);
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 50px;
+
+
 }
 
 #title {
-    
-    position: absolute;
-    top: 30px;
-    left: 50px;
-    /*
-    line-height: normal;
-    background: -webkit-linear-gradient(90deg, rgba(91,35,13,0.9) 3%, rgba(251,1,0,0.8) 42%, rgba(255,208,0,0.8) 93%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    */
     color: red;
     font-family: 'acumin-pro';
     font-weight: normal;
@@ -29,31 +20,22 @@
 }
 
 #signInTitle{
-    position: absolute;
-    top: 60px;
-    left: 50px;
-
     font-family: 'acumin-pro';
     font-size: 20px;
     font-weight: bold;
 }
 
-#form {
-    position: absolute;
-    left: 50px;
-    top: 80px;
-}
 
 /*Google and facebook button*/
 
 #firebaseui-auth-container{
     position: relative;
-    right: 16%;
+    right: 150px;
 }
 
 .firebaseui-idp-button.mdl-button.mdl-js-button.mdl-button--raised.firebaseui-idp-facebook.firebaseui-id-idp-button{
     border-radius: 25px !important;
-    margin: 0 0 0 20px;
+    margin: 0 0 0 40px;
 }
 
 .firebaseui-idp-button.mdl-button.mdl-js-button.mdl-button--raised.firebaseui-idp-google.firebaseui-id-idp-button
@@ -71,10 +53,8 @@
 /* Set up divider */
 
 .divider {
-    position: absolute;
 	width:400px;
     text-align:center;
-    left: 47px;
     color: gray;
 }
 
@@ -94,42 +74,19 @@
 	float:right;
 }
 
-/*Set up Register fields*/
-#formWrapper{
-    position: relative;
-    left: 30px;
-}
-
 
 #nameWrapper{
-    position: relative;
-    left: 20px;
     margin-left: auto;
     margin-right: auto;
 }
 
-#firstName{
-    position: relative;
-    left: 0px;
-}
-#middleName{
-    position: relative;
-    right: 0px;
-}
-#lastName{
-    position: relative;
-    right: 0px;
-}
-
-#verifyWrapper{
-    position: relative;
-    left:19px;
-}
-
 #next{
     position: relative;
-    left: 230px;
+    left:40%;
 }
+
+
+
 
 /*======== CSS for portrait style on mobile ============= */
 

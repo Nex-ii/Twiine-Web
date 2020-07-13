@@ -6,6 +6,7 @@ import './App.css';
 //import RegisterAcc from './components/RegisterAcc.js';
 import ForgotPassword from './components/ForgotPassword.js';
 
+
 function App() {
   //rce for components
   //console.log(test.state.todos)
@@ -19,9 +20,9 @@ function App() {
 
 
   return (
-    //<div className="App">
+    <div className="App">
       <ForgotPassword/>
-    //</div>
+    </div>
   );
 }
 
