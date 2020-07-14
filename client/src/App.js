@@ -3,8 +3,8 @@ import './App.css';
 
 
 //import Login from './components/Login.js';
-//import RegisterAcc from './components/RegisterAcc.js';
-import ForgotPassword from './components/ForgotPassword.js';
+import RegisterAcc from './components/RegisterAcc.js';
+//import ForgotPassword from './components/ForgotPassword.js';
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <ForgotPassword/>
+      <RegisterAcc/>
     </div>
   );
 }

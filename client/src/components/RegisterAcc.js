@@ -123,11 +123,13 @@ export class RegisterAcc extends Component {
                 console.log("Email and password not properly autenticated! error: " + error);
             });
 
-            firebase.auth().onAuthStateChanged(function(user) {
+            firebase.auth().onAuthStateChanged(async function(user) {
                 if (user) {
-                  user.updateProfile({
-                      displayName: self.state.username
+                  let _username  = self.state.username;
+                  await user.updateProfile({
+                      displayName: _username
                   })
+                  console.log("user: ", user);
                   // User is signed in.
                   console.log("user signed in");
                 
@@ -142,9 +144,9 @@ export class RegisterAcc extends Component {
                         name: self.state.middle == '' ? self.state.first + ' ' + self.state.last : self.state.first + ' ' + self.state.middle + ' ' + self.state.last,
                     }
 
-                    var makeUserDoc = firebase.functions().httpsCallable('createUserDoc');
+                    var makeUserDoc = firebase.functions().httpsCallable('createNewUser');
                     //makeUserDoc({data: userData, loggedIn: user})
-                    makeUserDoc({name: userData.name})
+                    makeUserDoc({name: userData.name, username: _username})
                     .then(function() {
                         console.log("called cloud function to create userdata");
                     })
