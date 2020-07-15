@@ -56,7 +56,7 @@ export class RegisterAcc extends Component {
         let self = this;
 
         //Check user name already taken
-        db.collection("Users").where("username", "==", username)
+        db.collection("BussinessUsers").where("username", "==", username)
         .get()
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
@@ -146,7 +146,7 @@ export class RegisterAcc extends Component {
 
                     var makeUserDoc = firebase.functions().httpsCallable('createNewUser');
                     //makeUserDoc({data: userData, loggedIn: user})
-                    makeUserDoc({name: userData.name, username: _username})
+                    makeUserDoc({name: userData.name, email: self.state.email, username: _username, collection: "BusinessUsers"})
                     .then(function() {
                         console.log("called cloud function to create userdata");
                     })
