@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+// import AboutBusiness1 from "./components/AboutBusiness1";
+// import AboutBusiness2 from "./components/AboutBusiness2";
+// import BusinessPlan from "./components/BusinessPlan";
+import Connector from "./components/Connector";
+
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <AboutBusiness1 /> */}
+      {/* <AboutBusiness2 /> */}
+      {/* <BusinessPlan /> */}
+      <Connector />
     </div>
   );
 }
