@@ -113,22 +113,28 @@
 }
 
 #forgotPass{
+    font-family: 'acumin-pro';
+    font-weight: normal;
     text-decoration:none;
     color: blue;
     position: relative;
-    left: 185px;
+    left: 172px;
 }
 
 #notMember{
+    font-family: 'acumin-pro';
+    font-weight: normal;
     position: relative;
-    left: 150px;
+    left: 135px;
 }
 
 #signup{
+    font-family: 'acumin-pro';
+    font-weight: normal;
     text-decoration:none;
     color: blue;
     position: relative;
-    left: 155px;
+    left: 140px;
 }
 
 /*========================== Mobile =========================*/

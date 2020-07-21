@@ -6,6 +6,15 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import {firebase} from '../database';
 import '../CSS/Login.css'
 import TextField from '@material-ui/core/TextField';
+import {ui, uiConfig} from '../FirebaseUI';
+
+
+ui.disableAutoSignIn();
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
+
+
+
 
 export class Login extends Component {
 
@@ -20,7 +29,7 @@ export class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.toggleButton = this.toggleButton.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
-        this.updateButtons = this.updateButtons.bind(this);
+
     }
     /*
         handle(state variable)Change will update the state variables whenever new data is added to
@@ -39,15 +48,6 @@ export class Login extends Component {
     handleRegister()
     {
         alert("Register");
-    }
-
-    updateButtons()
-    {
-        setTimeout(function () {
-            var sign_in_buttons = document.getElementsByClassName("firebaseui-idp-text firebaseui-idp-text-long");
-            sign_in_buttons[0].innerHTML = "Continue with Google";
-            sign_in_buttons[1].innerHTML = "Continue with Facebook";
-        })
     }
 
     //handleSubmit - tries to log the user in if they are registered in the database
@@ -83,7 +83,7 @@ export class Login extends Component {
 
             console.log(foundUsername.data.found);
 
-            if(foundUsername.data.found != undefined)
+            if(foundUsername.data.found !== undefined)
             {
                 firebase.auth().signInWithEmailAndPassword(foundUsername.data.found.email, self.state.password)
                 .then(function(){
@@ -107,12 +107,8 @@ export class Login extends Component {
         //Go to a forget password screen where user must enter their email
     }
     toggleButton(event){
-        this.forceUpdate();
         event.preventDefault();
-        this.setState((state) => {
-            return {check:!state.check};
-        });
-        document.getElementById("showPass").type = this.state.check ? "text" : "password";         
+        this.setState({check:!this.state.check}, ()=>{document.getElementById("showPass").type = this.state.check ? "text" : "password";});         
     }
 
     render() {

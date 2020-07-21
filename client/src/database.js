@@ -1,4 +1,5 @@
 // Your web app's Firebase configuration
+//import * as firebase from 'firebase'
 
 var firebaseConfig = {
     apiKey: "AIzaSyAbNSWkd3ojUbWGC-yGcbjnG4Mz5YIqe5A",
@@ -15,44 +16,14 @@ var firebaseConfig = {
   //const firebase = require("firebase");
   // Required for side-effects
   //require("firebase/firestore");
-  var firebase = require('firebase');
-  var firebaseui = require('firebaseui');
+  var firebase = require('firebase/app');
+  require("firebase/firestore");
   require("firebase/functions");
-
-
-
+  
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
-  //Initialize UI for authentification
-  var uiConfig = {
-    callbacks: {
-      
-    },
-    signInSuccessUrl: '<url-to-redirect-to-on-success>',
-    signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    ],
-    // tosUrl and privacyPolicyUrl accept either url string or a callback
-    // function.
-    /*
-    // Terms of service url.
-    tosUrl: '<your-tos-url>',
-    // Privacy policy url.
-    privacyPolicyUrl: '<your-privacy-policy-url>'
-    */
-  };
 
   
-
-  // Initialize the FirebaseUI Widget using Firebase.
-  var ui = new firebaseui.auth.AuthUI(firebase.auth());
-  ui.disableAutoSignIn();
-  // The start method will wait until the DOM is loaded.
-  ui.start('#firebaseui-auth-container', uiConfig);
   
 
   const db = firebase.firestore();

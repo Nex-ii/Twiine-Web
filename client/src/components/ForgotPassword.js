@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Button from 'react-mdl/lib/Button';
+import Button from '@material-ui/core/Button';
 import {firebase} from '../database'
 import '../CSS/ForgotPassword.css'
 import TextField from '@material-ui/core/TextField';
@@ -41,7 +41,7 @@ export class ForgotPassword extends Component {
 
         console.log(foundEmail.data.found);
 
-        if(foundEmail.data.found != undefined)
+        if(foundEmail.data.found !== undefined)
         {
             //reset via email if email is found in database
             //Leads to a verification page
@@ -89,7 +89,7 @@ export class ForgotPassword extends Component {
                     </label>
 
                     <p></p>
-                    <Button raised accent ripple type = "submit" id = "resetPass">Send Email</Button>
+                    <Button variant="contained" color="secondary" type = "submit" id = "resetPass">Send Email</Button>
                     <div id="emailMessage" style={{visibility: 'hidden'}}></div>
                 </form>
             </div>

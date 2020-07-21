@@ -7,6 +7,12 @@ import Button from '@material-ui/core/Button';
 import {db, firebase} from '../database';
 import TextField from '@material-ui/core/TextField';
 import {CustomTooltip} from '../CSS/RegisterAccCSS.js';
+import {ui, uiConfig} from '../FirebaseUI';
+
+
+ui.disableAutoSignIn();
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
 
 /*TODO:
     - Check for username taken 
@@ -51,6 +57,7 @@ export class RegisterAcc extends Component {
     }
     handleUsernameChange(event)
     {
+        //Set the username state to the value entered
         this.setState({username: event.target.value});
         let username = document.getElementById("username").value;
         let self = this;
@@ -74,7 +81,7 @@ export class RegisterAcc extends Component {
         console.log(this.state.usedUsername);
 
         //Change colors depending if the username is valid
-        if(username != "")
+        if(username !== "")
             self.setState({usedUsername: false});
     }
     handlePasswordChange(event)
@@ -98,11 +105,11 @@ export class RegisterAcc extends Component {
         //event.preventDefault();
         console.log(this.state.usedUsername);
         //Check for passwords matching
-        if(this.state.password != this.state.repassword)
+        if(this.state.password !== this.state.repassword)
         {
             alert("Passwords not the same!");
         }
-        else if(this.state.usedUsername == true)
+        else if(this.state.usedUsername === true)
         {
             event.preventDefault();
             alert("username is already taken!");
@@ -141,11 +148,11 @@ export class RegisterAcc extends Component {
 
                     //Save the username, if they don't verify within certain time frame then delete it
                     let userData = {
-                        name: self.state.middle == '' ? self.state.first + ' ' + self.state.last : self.state.first + ' ' + self.state.middle + ' ' + self.state.last,
+                        name: self.state.middle === '' ? self.state.first + ' ' + self.state.last : self.state.first + ' ' + self.state.middle + ' ' + self.state.last,
                     }
-
+                    
+                    //Call the cloud function to make a new user document in the database
                     var makeUserDoc = firebase.functions().httpsCallable('createNewUser');
-                    //makeUserDoc({data: userData, loggedIn: user})
                     makeUserDoc({name: userData.name, email: self.state.email, username: _username, collection: "BusinessUsers"})
                     .then(function() {
                         console.log("called cloud function to create userdata");
@@ -233,17 +240,11 @@ export class RegisterAcc extends Component {
         toggleButton - toggles between visibility icons based on when the user wants to hide/reveal their password
     */
     toggleButton(event){
-        this.forceUpdate();
         event.preventDefault();
-
-        this.state.check = !this.state.check;
-        /*
-        this.setState((state) => {
-            return {check:!state.check};
-        });
-        */
-        document.getElementById("showPass").type = this.state.check ? "text" : "password";
-        document.getElementById("confirmPass").type = this.state.check ? "text" : "password";           
+        this.setState({check:!this.state.check}, ()=>{
+            document.getElementById("showPass").type = this.state.check ? "text" : "password";
+            document.getElementById("confirmPass").type = this.state.check ? "text" : "password";    
+        });  
     }
     render() {
         return (
@@ -385,7 +386,7 @@ export class RegisterAcc extends Component {
                         </div>
                     </div>
                     <Button variant="contained" color="secondary" type = "submit" id = "next">
-                                Next
+                            Next
                     </Button>
                 </form>
             </div>
