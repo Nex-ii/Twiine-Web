@@ -10,6 +10,11 @@ import ContactUs from './components/ContactUs.js';
 import NavBar from './components/NavBar.js';
 import HomePage from './components/HomePage.js';
 
+//import Login from './components/Login.js';
+//import RegisterAcc from './components/RegisterAcc.js';
+// import ForgotPassword from './components/ForgotPassword.js';
+
+
 function App() {
   //rce for components
   //console.log(test.state.todos)
