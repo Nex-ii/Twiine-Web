@@ -37,7 +37,7 @@ function getSteps() {
   ];
 }
 
-function Connector() {
+function BusinessForm() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
@@ -269,4 +269,4 @@ function Connector() {
   );
 }
 
-export default Connector;
+export default BusinessForm;
