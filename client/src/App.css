@@ -13,11 +13,6 @@
   pointer-events: none;
 }
 
-@viewport {
-  width: device-width ;
-  zoom: 1.0 ;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -27,8 +22,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-
-
 }
 
 .App-link {
