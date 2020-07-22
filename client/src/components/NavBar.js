@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ClearIcon from '@material-ui/icons/Clear';
 import '../CSS/NavBar.css';
+import Login from '../components/Login.js';
 const drawerWidth = '100vw';
 
 export default function NavBar(){
@@ -25,8 +26,9 @@ export default function NavBar(){
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
     return(
-        <div id="wrapper">
+        <div id="wrapper-navbar">
             <div className={classes.root}>
             <div id="allClickable">
             <AppBar
@@ -44,7 +46,9 @@ export default function NavBar(){
                     </a>
                 </Typography>
                 <Button id="loginButton">
+                    <Link to="/login">
                     Login
+                    </Link>
                 </Button>
                 <IconButton
                     color="inherit"
@@ -52,7 +56,6 @@ export default function NavBar(){
                     edge="end"
                     onClick={handleDrawerOpen}
                     className={clsx(open && classes.hide)}
-                    
                 >
                     <MenuIcon style={{fontSize: 110}} />
                 </IconButton>
@@ -75,7 +78,9 @@ export default function NavBar(){
             </a>
             </Typography>
             <Button id="insideLoginButton">
+                <Link to="/login">
                 Login
+                </Link>
             </Button>
             <IconButton onClick={handleDrawerClose}>
                 <ClearIcon style={{fontSize: 110}}>

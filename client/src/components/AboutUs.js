@@ -5,7 +5,7 @@ import '../CSS/AboutUs.css';
 export class AboutUs extends Component {
     render() {
         return (
-            <div id="wrapper">
+            <div id="wrapper-aboutus">
                 <Typography id="aboutUsTitle">
                     <h1>
                         About Us
