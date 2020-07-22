@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import {Link} from "react-router-dom";
 import BackgroundSlider from 'react-background-slider'
 import source1 from '../images/source1.jpg';
 import source2 from '../images/source2.jpg';
@@ -18,11 +18,13 @@ export default function HomePage (){
                 duration={4} transition={0.5} style={wholePage}
             />
             <CssBaseline />
+            <Link to="/register">
             <Button style={registerButton}>
                 <Typography style={registerText}>
                     Register
                 </Typography>
             </Button>
+            </Link>
         </div>
     );
 }

@@ -12,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ClearIcon from '@material-ui/icons/Clear';
 import '../CSS/NavBar.css';
-import Login from '../components/Login.js';
 const drawerWidth = '100vw';
 
 export default function NavBar(){
@@ -42,14 +41,15 @@ export default function NavBar(){
                 <Toolbar>
                 <Typography variant="h2" noWrap className={classes.title}>
                     <a href="/" id="mainLogo">
-                        Secret Title
+                        Twiine
                     </a>
                 </Typography>
-                <Button id="loginButton">
-                    <Link to="/login">
-                    Login
-                    </Link>
-                </Button>
+                <Link to="/login">
+                    <Button id="loginButton">
+                        Login
+                    </Button> 
+                </Link>
+                
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"
@@ -74,14 +74,14 @@ export default function NavBar(){
             <div className={classes.drawerHeader}>
             <Typography variant="h2" nowrap className={classes.title}>
             <a href="/" id="mainLogo" style={{paddingLeft: "12px", color: "red"}}>
-                Secret Title
+                Twiine
             </a>
             </Typography>
+            <Link to="/login" >
             <Button id="insideLoginButton">
-                <Link to="/login">
                 Login
-                </Link>
             </Button>
+            </Link>
             <IconButton onClick={handleDrawerClose}>
                 <ClearIcon style={{fontSize: 110}}>
                 </ClearIcon>

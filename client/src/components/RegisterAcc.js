@@ -43,20 +43,19 @@ export class RegisterAcc extends Component {
     /** 
      * Update the state variables whenever new data is entered into the input fields
     */
-    handleFirstnameChange(event)
-    {
+    componentDidMount() {
+        ui.start('#firebaseui-auth-container', uiConfig);
+    }
+    handleFirstnameChange(event){
         this.setState({first: event.target.value});
     }
-    handleMiddlenameChange(event)
-    {
+    handleMiddlenameChange(event){
         this.setState({middle: event.target.value});
     }
-    handleLastnameChange(event)
-    {
+    handleLastnameChange(event){
         this.setState({last: event.target.value});
     }
-    handleUsernameChange(event)
-    {
+    handleUsernameChange(event){
         //Set the username state to the value entered
         this.setState({username: event.target.value});
         let username = document.getElementById("username").value;
@@ -84,18 +83,15 @@ export class RegisterAcc extends Component {
         if(username !== "")
             self.setState({usedUsername: false});
     }
-    handlePasswordChange(event)
-    {
+    handlePasswordChange(event){
         this.setState({password: event.target.value});
 
         //Validate that password meets requirements
     }
-    handleRePasswordChange(event)
-    {
+    handleRePasswordChange(event){
         this.setState({repassword: event.target.value});
     }
-    handleEmailChange(event)
-    {
+    handleEmailChange(event){
         this.setState({email: event.target.value});
     }
 
@@ -105,18 +101,15 @@ export class RegisterAcc extends Component {
         //event.preventDefault();
         console.log(this.state.usedUsername);
         //Check for passwords matching
-        if(this.state.password !== this.state.repassword)
-        {
+        if(this.state.password !== this.state.repassword){
             alert("Passwords not the same!");
         }
-        else if(this.state.usedUsername === true)
-        {
+        else if(this.state.usedUsername === true){
             event.preventDefault();
             alert("username is already taken!");
         }
         //Password requirements met, get verification
-        else
-        {
+        else{
             let self = this;
 
             event.preventDefault();
@@ -248,7 +241,7 @@ export class RegisterAcc extends Component {
     }
     render() {
         return (
-            <div id = "wrapper">
+            <div id = "wrapper-registeracc">
                 <div id = "title">Twiine</div>
                 <div id = "signInTitle">Sign in to Twiine</div>
 

@@ -17,8 +17,6 @@ ui.start('#firebaseui-auth-container', uiConfig);
 
 
 export class Login extends Component {
-
-    
     constructor(props)
     {
         super(props);
@@ -35,6 +33,9 @@ export class Login extends Component {
         handle(state variable)Change will update the state variables whenever new data is added to
         the input fields
     */
+    componentDidMount() {
+        ui.start('#firebaseui-auth-container', uiConfig);
+    }
     handleUsernameChange(event)
     {
         this.setState({username: event.target.value});
