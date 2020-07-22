@@ -78,8 +78,8 @@ export class Login extends Component {
         else
         {
             console.log(self.state.username);
-            var checkUsername = firebase.functions().httpsCallable('userExists');
-            var foundUsername = await checkUsername({left_data_field: 'username', right_userdata: self.state.username});
+            var checkUsername = firebase.functions().httpsCallable('getUser');
+            var foundUsername = await checkUsername({authType: 'username', authField: self.state.username});
 
             console.log(foundUsername.data.found);
 

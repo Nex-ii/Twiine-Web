@@ -36,8 +36,8 @@ export class ForgotPassword extends Component {
         alert("made!");
         event.preventDefault();
 
-        var checkEmail = firebase.functions().httpsCallable('userExists');
-        var foundEmail = await checkEmail({left_data_field: "email", right_userdata: this.state.email});
+        var checkEmail = firebase.functions().httpsCallable('getUser');
+        var foundEmail = await checkEmail({authType: "email", authField: this.state.email});
 
         console.log(foundEmail.data.found);
 
