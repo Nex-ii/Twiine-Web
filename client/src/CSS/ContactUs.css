@@ -10,7 +10,7 @@
 .namesBox{
     text-align: left;
 }
-#wrapper{
+#wrapper-contactus{
     display: flex;
     justify-content: left;
     flex-direction: column;

@@ -113,7 +113,7 @@ export class Login extends Component {
 
     render() {
         return (
-            <div id = "wrapper">
+            <div id = "wrapper-loginpage">
                 <div id = "title">Twiine</div>
                 <div id = "signInTitle">Sign in to Twiine</div>
                 <p style = {{paddingTop: "75px"}}></p>

@@ -55,7 +55,7 @@ THis is for the register,title, and login button to be shifted at the same lengt
 }
 @media screen and (orientation:portrait) and (min-height: 320px) and (max-height: 812px) {
     
-    #wrapper {
+    #wrapper-navbar {
         border-radius: 25px;
         border-color: lightgray;
         width: 600px;

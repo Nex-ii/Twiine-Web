@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 const ContactUs = (props) =>{
     const classes = useStyles();
     return(
-        <div id="wrapper">
+        <div id="wrapper-contactus">
         <Typography id="contactUsTitle">
             <h1>
                 Contact Us
