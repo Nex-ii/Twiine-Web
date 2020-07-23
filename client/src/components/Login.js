@@ -8,14 +8,6 @@ import '../CSS/Login.css'
 import TextField from '@material-ui/core/TextField';
 import {ui, uiConfig} from '../FirebaseUI';
 
-
-ui.disableAutoSignIn();
-// The start method will wait until the DOM is loaded.
-ui.start('#firebaseui-auth-container', uiConfig);
-
-
-
-
 export class Login extends Component {
     constructor(props)
     {
@@ -34,8 +26,10 @@ export class Login extends Component {
         the input fields
     */
     componentDidMount() {
+        ui.disableAutoSignIn();
         ui.start('#firebaseui-auth-container', uiConfig);
     }
+    
     handleUsernameChange(event)
     {
         this.setState({username: event.target.value});
@@ -114,27 +108,22 @@ export class Login extends Component {
 
     render() {
         return (
-            <div id = "wrapper-loginpage">
-                <div id = "title">Twiine</div>
-                <div id = "signInTitle">Sign in to Twiine</div>
-                <p style = {{paddingTop: "75px"}}></p>
-
+            <div className="login-wrapper">
+                <div className="title">Twiine</div>
+                <div className="sign-in-title">Sign in to Twiine</div>
                 {
                     //Google and facebook button
                 }
-                <form onSubmit = {this.handleSubmit} id = "form">
-                    <div id="firebaseui-auth-container"></div>
-
+                <form onSubmit={this.handleSubmit} className="login-container">
+                    <div id="firebaseui-auth-container"/>
                     {
                         //Divider
                     }
                     <div className="divider">
                         <hr className="left"/>or<hr className="right" />
                     </div>
-
-                    <br></br>
-                    
-                    <div id = "infoField">
+                    <br/>
+                    <div className="info-field-container">
                         {
                             //Username login
                         }
