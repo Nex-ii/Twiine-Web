@@ -40,7 +40,7 @@
 
 #firebaseui-auth-container{
     position: relative;
-    right: 19%;
+    left: -19%;
 }
 
 .firebaseui-idp-button.mdl-button.mdl-js-button.mdl-button--raised.firebaseui-idp-facebook.firebaseui-id-idp-button{
@@ -66,7 +66,7 @@
     position: relative;
 	width:400px;
     text-align:center;
-    left: 37px;
+    left: 40px;
     color: gray;
 }
 
