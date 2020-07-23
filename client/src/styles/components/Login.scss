@@ -23,7 +23,7 @@
     padding-bottom: 75px;
   }
 
-  .login-container {
+  .login-button {
     background: #eb5834;
     border-radius: 40;
     border: 0;
@@ -33,24 +33,33 @@
     padding: 0 10px 0 0;
     right: 15px;
     box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+    position: relative;
+    left: 100px;
+  }
 
-    #firebaseui-auth-container{
-      position: relative;
-      left: -19%;
-    }
-    
-    .firebaseui-idp-button.mdl-button.mdl-js-button.mdl-button--raised.firebaseui-idp-facebook.firebaseui-id-idp-button{
+  .not-member{
+    font-family: 'acumin-pro';
+    font-weight: normal;
+    position: relative;
+    left: 135px;
+  }
+
+  #firebaseui-auth-container{
+    position: relative;
+    left: -19%;
+
+    .firebaseui-id-idp-button {
       border-radius: 25px !important;
-      margin: 0 0 0 40px;
     }
-    
-    .firebaseui-idp-button.mdl-button.mdl-js-button.mdl-button--raised.firebaseui-idp-google.firebaseui-id-idp-button
-    {
-      border-radius: 25px !important;
-    }
+
     .firebaseui-idp-list{
       width: 500px !important;
+
+      &:first-child {
+        margin: 0 0 0 40px;
+      }
     }
+
     .firebaseui-list-item
     {
       display: inline-block !important;
@@ -107,10 +116,7 @@ float:right;
   left: 200px;
 }
 
-#login{
-  position: relative;
-  left: 100px;
-}
+
 
 #forgotPass{
   font-family: 'acumin-pro';
@@ -121,12 +127,7 @@ float:right;
   left: 172px;
 }
 
-#notMember{
-  font-family: 'acumin-pro';
-  font-weight: normal;
-  position: relative;
-  left: 135px;
-}
+
 
 #signup{
   font-family: 'acumin-pro';

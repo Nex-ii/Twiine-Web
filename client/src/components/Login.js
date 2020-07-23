@@ -137,8 +137,8 @@ export class Login extends Component {
                             />
                             
                         </label>
-                        <br></br>
-                        <label id = "password">
+                        <br/>
+                        <label class= "password">
                             <TextField
                                 type="password"
                                 id = "showPass"
@@ -166,15 +166,15 @@ export class Login extends Component {
                         }
                         <a href="https://google.com/" id = "forgotPass">Forgot Password?</a>
                         
-                        <br></br><br></br>
-                        <Button id = "login" type = "submit">
+                        <br/><br/>
+                        <Button className="login-button" type ="submit">
                             Sign in
                         </Button>
-                        <br></br>
+                        <br/>
                         {
                             //sign up
                         }
-                        <span id = "notMember">Not a member?</span>
+                        <span className="not-member">Not a member?</span>
                         <a href="https://google.com/" id = "signup" > Sign up</a>
                     </div> 
                 
