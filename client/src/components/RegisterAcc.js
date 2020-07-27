@@ -9,20 +9,12 @@ import TextField from '@material-ui/core/TextField';
 import {CustomTooltip} from '../CSS/RegisterAccCSS.js';
 import {ui, uiConfig} from '../FirebaseUI';
 
-
-ui.disableAutoSignIn();
-// The start method will wait until the DOM is loaded.
-ui.start('#firebaseui-auth-container', uiConfig);
-
 /*TODO:
     - Check for username taken 
     - email already in use
     - Verification code
     - store the password securely
 */
-
-
-
 
 export class RegisterAcc extends Component {
     constructor(props)
@@ -44,18 +36,27 @@ export class RegisterAcc extends Component {
      * Update the state variables whenever new data is entered into the input fields
     */
     componentDidMount() {
+        ui.disableAutoSignIn();
         ui.start('#firebaseui-auth-container', uiConfig);
     }
-    handleFirstnameChange(event){
+
+    handleFirstnameChange = (event) => 
+    {
         this.setState({first: event.target.value});
     }
-    handleMiddlenameChange(event){
+
+    handleMiddlenameChange = (event) => 
+    {
         this.setState({middle: event.target.value});
     }
-    handleLastnameChange(event){
+
+    handleLastnameChange = (event) => 
+    {
         this.setState({last: event.target.value});
     }
-    handleUsernameChange(event){
+
+    handleUsernameChange = (event) => 
+    {
         //Set the username state to the value entered
         this.setState({username: event.target.value});
         let username = document.getElementById("username").value;
@@ -83,15 +84,21 @@ export class RegisterAcc extends Component {
         if(username !== "")
             self.setState({usedUsername: false});
     }
-    handlePasswordChange(event){
+
+    handlePasswordChange = (event) => 
+    {
         this.setState({password: event.target.value});
 
         //Validate that password meets requirements
     }
-    handleRePasswordChange(event){
+
+    handleRePasswordChange = (event) => 
+    {
         this.setState({repassword: event.target.value});
     }
-    handleEmailChange(event){
+
+    handleEmailChange = (event) => 
+    {
         this.setState({email: event.target.value});
     }
 
@@ -232,7 +239,8 @@ export class RegisterAcc extends Component {
     /*
         toggleButton - toggles between visibility icons based on when the user wants to hide/reveal their password
     */
-    toggleButton(event){
+    toggleButton = (event) => 
+    {
         event.preventDefault();
         this.setState({check:!this.state.check}, ()=>{
             document.getElementById("showPass").type = this.state.check ? "text" : "password";
@@ -241,145 +249,128 @@ export class RegisterAcc extends Component {
     }
     render() {
         return (
-            <div id = "wrapper-registeracc">
-                <div id = "title">Twiine</div>
-                <div id = "signInTitle">Sign in to Twiine</div>
-
+            <div className="register-container">
+                <div className="title">Twiine</div>
+                <div className="sign-in-title">Sign in to Twiine</div>
                 {
                     //Google and facebook button
                 }
-                <div id="firebaseui-auth-container"></div>
+                <div id="firebaseui-auth-container"/>
 
                 {
                     //Divider
                 }
                 <div className="divider">
-                    <hr className="left" />or<hr className="right" />
+                    <a className="underline"/>or<a className="underline"/>
                 </div>
                 {
                     //form
                 }
                 <form onSubmit = {this.handleSubmit}>
-                    <div id = "formWrapper">
-                        <div id = "nameWrapper">
-                            <label style={{paddingRight: '40px'}} id = "firstName">
-                                    <TextField
-                                        onChange={this.handleFirstnameChange}
-                                        label="First name"
-                                        style={{width: '150px'}}
-                                        value = {this.state.first}
-                                        required = {true}
-                                    />
-                                
-                            </label>
-                            <label style={{paddingRight: '40px'}}  id = "middleName">
-                                    <TextField
-                                        onChange={this.handleMiddlenameChange}
-                                        label="Middle initial"
-                                        style={{width: '100px'}}
-                                        value = {this.state.middle}
-                                    />
-                                
-                            </label>
-                            <label style={{paddingRight: '40px'}}  id = "lastName">
-                                    <TextField
-                                        onChange={this.handleLastnameChange}
-                                        label="Last name"
-                                        style={{width: '150px'}}
-                                        value = {this.state.last}
-                                        required = {true}
-                                    />
-                                
-                            </label>
-                        </div>
-                        
-                        <div id = "verifyWrapper">
-                            <label id = "email">
+                    <div className="form-container">
+                        <div className="name-wrapper">
+                            <label id="firstName">
                                 <TextField
-                                    type="text"
-                                    onChange = {this.handleEmailChange}
-                                    label="Email"
-                                    style={{width: '290px'}}
-                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                                    value = {this.state.email}
+                                    onChange={this.handleFirstnameChange}
+                                    label="First name"
+                                    value = {this.state.first}
                                     required = {true}
                                 />
                             </label>
-                            <br></br>
-                            <label >
+                            <label id="middleName">
+                                <TextField
+                                    onChange={this.handleMiddlenameChange}
+                                    label="Middle initial"
+                                    value={this.state.middle}
+                                />
+                            </label>
+                            <label id="lastName">
+                                <TextField
+                                    onChange={this.handleLastnameChange}
+                                    label="Last name"
+                                    value={this.state.last}
+                                    required={true}
+                                />
+                            </label>
+                        </div>
+                        <div className="verify-container">
+                            <label id="email">
+                                <TextField
+                                    type="text"
+                                    onChange={this.handleEmailChange}
+                                    label="Email"
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                    value={this.state.email}
+                                    required={true}
+                                />
+                            </label>
+                            <label>
                                 <TextField
                                     onChange={this.handleUsernameChange}
                                     label="Username"
-                                    id = "username"
-                                    style={{width: '290px'}}
-                                    value = {this.state.username}
-                                    required = {true}
-                                    error = {this.state.usedUsername}
-                                    helperText = {this.state.usedUsername ? "Username taken!" : ""}
+                                    id="username"
+                                    value={this.state.username}
+                                    required={true}
+                                    error={this.state.usedUsername}
+                                    helperText={this.state.usedUsername ? "Username taken!" : ""}
                                 />
                                 
                             </label>
-                            <br></br>
-                            <label style={{paddingRight: '6px'}}> 
-                                <CustomTooltip 
-                                    placement="bottom"
-                                    title={
-                                    <React.Fragment>
-                                        <span style = {{color: 'Black', fontSize: '15px'}} id = "requirements">Password requirements: </span>
-                                        <br></br>
-                                        <span style = {{color: this.checkLength(this.state.password) ? 'green' : 'firebrick', fontSize: '15px'}} id = "minimum"> Minimum 8 characters: </span>
-                                        <br></br>
-                                        <span style = {{color: this.checkUpper(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "upper"> At least one uppercase letter [A-Z]: </span>
-                                        <br></br>
-                                        <span style = {{color: this.checkLower(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "lower"> At least one lowercase letter [a-z] </span>
-                                        <br></br>
-                                        <span style = {{color: this.checkNumeral(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "numeral"> At least one numeral [0-9] </span>
-                                        <br></br>
-                                        <span style = {{color: this.checkSymbol(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "symbol"> At least one symbol [!@#$%^&*()+_,.{}?-] </span>
+                            <div className="password-field">
+                                <label> 
+                                    <CustomTooltip 
+                                        placement="bottom"
+                                        title={
+                                        <React.Fragment>
+                                            <span style = {{color: 'Black', fontSize: '15px'}} id = "requirements">Password requirements: </span>
+                                            <br></br>
+                                            <span style = {{color: this.checkLength(this.state.password) ? 'green' : 'firebrick', fontSize: '15px'}} id = "minimum"> Minimum 8 characters: </span>
+                                            <br></br>
+                                            <span style = {{color: this.checkUpper(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "upper"> At least one uppercase letter [A-Z]: </span>
+                                            <br></br>
+                                            <span style = {{color: this.checkLower(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "lower"> At least one lowercase letter [a-z] </span>
+                                            <br></br>
+                                            <span style = {{color: this.checkNumeral(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "numeral"> At least one numeral [0-9] </span>
+                                            <br></br>
+                                            <span style = {{color: this.checkSymbol(this.state.password) ? "green" : "firebrick", fontSize: '15px'}} id = "symbol"> At least one symbol [!@#$%^&*()+_,.{}?-] </span>
 
-                                    </React.Fragment>}
-                                >
-                                    <TextField
-                                        type="password"
-                                        id = "showPass"
-                                        onChange = {this.handlePasswordChange}
-                                        label="Password"
-                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+_,.{}?-]).{8,}"
-                                        style={{width: '290px'}}
-                                        value = {this.state.password}
-                                        required = {true}
-                                        
-                                    />
-                                </CustomTooltip>
-                            </label>
-                            
-                            <label>
-                            <IconButton aria-label="Show Password" 
-                                onClick= {this.toggleButton}                        
-                                edge="end"
-
-                            >
-                            {this.state.check ? <VisibilityIcon/> : <VisibilityOffIcon/>}
-                            </IconButton>
-                            </label>
-
+                                        </React.Fragment>}
+                                    >
+                                        <TextField
+                                            type="password"
+                                            id="showPass"
+                                            onChange={this.handlePasswordChange}
+                                            label="Password"
+                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+_,.{}?-]).{8,}"
+                                            value={this.state.password}
+                                            required={true}
+                                            
+                                        />
+                                    </CustomTooltip>
+                                </label>
+                                <label className="hide-password">
+                                    <IconButton aria-label="Show Password" 
+                                        onClick= {this.toggleButton}
+                                        edge="end"
+                                    >
+                                    {this.state.check ? <VisibilityIcon/> : <VisibilityOffIcon/>}
+                                    </IconButton>
+                                </label>
+                            </div>
                             <label >
                                 <TextField
                                     type="password"
-                                    id = "confirmPass"
-                                    onChange = {this.handleRePasswordChange}
+                                    id="confirmPass"
+                                    onChange={this.handleRePasswordChange}
                                     label="Confirm password"
-                                    style={{width: '290px'}}
-                                    value = {this.state.repassword}
-                                    required = {true}
+                                    value={this.state.repassword}
+                                    required={true}
                                 />
-
                             </label>
-                            <br></br><br></br>
                         </div>
                     </div>
-                    <Button variant="contained" color="secondary" type = "submit" id = "next">
-                            Next
+                    <Button variant="contained" color="secondary" type="submit" id="next">
+                        Next
                     </Button>
                 </form>
             </div>
