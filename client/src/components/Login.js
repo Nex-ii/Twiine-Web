@@ -23,7 +23,8 @@ export class Login extends Component {
         handle(state variable)Change will update the state variables whenever new data is added to
         the input fields
     */
-    componentDidMount() {
+    componentDidMount() 
+    {
         ui.disableAutoSignIn();
         ui.start('#firebaseui-auth-container', uiConfig);
     }
@@ -37,6 +38,7 @@ export class Login extends Component {
     {
         this.setState({password: event.target.value});
     }
+
     //handleRegister - redirects users to registration page
     handleRegister()
     {
@@ -44,7 +46,8 @@ export class Login extends Component {
     }
 
     //handleSubmit - tries to log the user in if they are registered in the database
-    async handleSubmit(event){
+    async handleSubmit(event)
+    {
         //Add to the database
         alert("made!");
         event.preventDefault();
@@ -94,11 +97,13 @@ export class Login extends Component {
             }
         }
     }
+
     handlePassForgot()
     {
 
         //Go to a forget password screen where user must enter their email
     }
+    
     toggleButton = (event) =>
     {
         event.preventDefault();
