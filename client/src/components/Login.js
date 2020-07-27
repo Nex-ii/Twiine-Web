@@ -1,25 +1,23 @@
-import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import IconButton from '@material-ui/core/IconButton';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-import {firebase} from '../database';
-import '../CSS/Login.css'
 import TextField from '@material-ui/core/TextField';
-import {ui, uiConfig} from '../FirebaseUI';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import React, { Component } from 'react';
+import '../CSS/Login.css';
+import { firebase } from '../database';
+import { ui, uiConfig } from '../FirebaseUI';
 
 export class Login extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {username: '', password: '', check: ''};
-        this.state.check = false;
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.state = {
+            username: '',
+            password: '',
+            check: false
+        }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.toggleButton = this.toggleButton.bind(this);
-        this.handleRegister = this.handleRegister.bind(this);
-
     }
     /*
         handle(state variable)Change will update the state variables whenever new data is added to
@@ -30,12 +28,12 @@ export class Login extends Component {
         ui.start('#firebaseui-auth-container', uiConfig);
     }
     
-    handleUsernameChange(event)
+    handleUsernameChange = (event) =>
     {
         this.setState({username: event.target.value});
     }
 
-    handlePasswordChange(event)
+    handlePasswordChange = (event) =>
     {
         this.setState({password: event.target.value});
     }
@@ -101,7 +99,8 @@ export class Login extends Component {
 
         //Go to a forget password screen where user must enter their email
     }
-    toggleButton(event){
+    toggleButton = (event) =>
+    {
         event.preventDefault();
         this.setState({check:!this.state.check}, ()=>{document.getElementById("showPass").type = this.state.check ? "text" : "password";});         
     }
@@ -120,53 +119,49 @@ export class Login extends Component {
                         //Divider
                     }
                     <div className="divider">
-                        <hr className="left"/>or<hr className="right" />
+                        <a className="underline"/>or<a className="underline"/>
                     </div>
                     <br/>
                     <div className="info-field-container">
                         {
                             //Username login
                         }
-                        <label style={{paddingRight: '40px'}} id = "username" >
+                        <label className="username-field">
                             <TextField
                                 onChange={this.handleUsernameChange}
                                 label="Username/Email"
-                                style={{width: '200px'}}
                                 value = {this.state.username}
                                 required = {true}
                             />
-                            
                         </label>
-                        <br/>
-                        <label class= "password">
-                            <TextField
-                                type="password"
-                                id = "showPass"
-                                onChange = {this.handlePasswordChange}
-                                label="Password"
-                                style={{width: '200px'}}
-                                value = {this.state.password}
-                                required = {true}
-                            />
-                        </label>
-                        <label>
-                        <IconButton aria-label="Show Password" 
-                            onClick= {this.toggleButton}
-                            style = {{position: 'relative', left: '70px'}}                        
-                            edge="end"
-                        >
-                        {this.state.check ? 
-                        <VisibilityIcon /> : <VisibilityOffIcon/>}
-                        </IconButton>
-
-                        </label>
-                        <br></br>
+                        <div className="password-field">
+                            <label className="password">
+                                <TextField
+                                    type="password"
+                                    id = "showPass"
+                                    onChange = {this.handlePasswordChange}
+                                    label="Password"
+                                    value = {this.state.password}
+                                    required = {true}
+                                />
+                            </label>
+                            <label className="hide-password">
+                                <IconButton aria-label="Show Password" 
+                                    onClick= {this.toggleButton}        
+                                    edge="end"
+                                >
+                                {
+                                    this.state.check 
+                                    ? <VisibilityIcon /> 
+                                    : <VisibilityOffIcon />
+                                }
+                                </IconButton>
+                            </label>
+                        </div> 
                         {
                             //Forgot password
                         }
-                        <a href="https://google.com/" id = "forgotPass">Forgot Password?</a>
-                        
-                        <br/><br/>
+                        <a href="https://google.com/" className="forgot-password">Forgot Password?</a>
                         <Button className="login-button" type ="submit">
                             Sign in
                         </Button>
@@ -174,8 +169,10 @@ export class Login extends Component {
                         {
                             //sign up
                         }
-                        <span className="not-member">Not a member?</span>
-                        <a href="https://google.com/" id = "signup" > Sign up</a>
+                        <div className="not-member">
+                            <span>Not a member? </span>
+                            <a href="https://google.com/" className="signup">Sign up</a>
+                        </div>
                     </div> 
                 
                 </form>

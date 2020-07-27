@@ -21,9 +21,6 @@ ui.start('#firebaseui-auth-container', uiConfig);
     - store the password securely
 */
 
-
-
-
 export class RegisterAcc extends Component {
     constructor(props)
     {
