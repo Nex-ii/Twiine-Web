@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../CSS/RegisterAcc.css'
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import IconButton from '@material-ui/core/IconButton';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
