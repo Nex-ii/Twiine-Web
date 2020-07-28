@@ -5,13 +5,13 @@ import '../CSS/AboutUs.css';
 export class AboutUs extends Component {
     render() {
         return (
-            <div id="wrapper-aboutus">
-                <Typography id="aboutUsTitle">
+            <div className="about-us-wrapper">
+                <Typography className="title">
                     <h1>
                         About Us
                     </h1>
                 </Typography>
-                <div id="aboutUsBox">
+                <div className="box">
                     <Typography>
                         <h3>
                             Together we are valorant. Valorant is love. Valorant is life. 
