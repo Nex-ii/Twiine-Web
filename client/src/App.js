@@ -15,7 +15,7 @@ import RegisterAcc from './components/RegisterAcc.js';
 function App() {
   //rce for components
   //console.log(test.state.todos)
-/*
+
   return (
     <Router>
     <div className="App">
@@ -28,12 +28,7 @@ function App() {
     </div>
     </Router>
   );
-  */
-  return (
-    <div className="App">
-        <Login></Login>
-    </div>
-  );
+
 }
 
 export default App;
