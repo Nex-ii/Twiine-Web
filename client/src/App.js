@@ -15,7 +15,7 @@ import RegisterAcc from './components/RegisterAcc.js';
 function App() {
   //rce for components
   //console.log(test.state.todos)
-
+/*
   return (
     <Router>
     <div className="App">
@@ -27,6 +27,12 @@ function App() {
         <Route path="/register" exact component={RegisterAcc}/>
     </div>
     </Router>
+  );
+  */
+  return (
+    <div className="App">
+        <Login></Login>
+    </div>
   );
 }
 

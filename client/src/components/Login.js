@@ -4,9 +4,11 @@ import TextField from '@material-ui/core/TextField';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import React, { Component } from 'react';
-import '../CSS/Login.css';
 import { firebase } from '../database';
 import { ui, uiConfig } from '../FirebaseUI';
+import infinity from '../images/infinity_1.png';
+import logo from '../images/logo_white.png';
+import '../styles/components/Login.scss';
 
 export class Login extends Component {
     constructor(props)
@@ -112,76 +114,81 @@ export class Login extends Component {
 
     render() {
         return (
-            <div className="login-wrapper">
-                <div className="title">Twiine</div>
-                <div className="sign-in-title">Sign in to Twiine</div>
-                {
-                    //Google and facebook button
-                }
-                <form onSubmit={this.handleSubmit} className="login-container">
-                    <div id="firebaseui-auth-container"/>
+            <div className = "wrapper-loginpage">
+                <img src = {infinity} className = "infinity"/>
+                <img src = {logo} className = "logo-large"/>
+                <div className = "business-login">Business Login</div>
+                <div className="wrapper-signin">
+                    <img src = {logo} className = "title"></img>
+                    <div className="sign-in-title">Sign in to Twiine</div>
                     {
                         //Google and facebook button
                     }
-                    <div className="divider">
-                        <a className="underline"/>or<a className="underline"/>
-                    </div>
-                    <br/>
-                    <div className="info-field-container">
+                    <form onSubmit={this.handleSubmit} className="login-container">
+                        <div id="firebaseui-auth-container"/>
                         {
-                            //Divider
+                            //Google and facebook button
                         }
-                        <label className="username-field">
-                            <TextField
-                                onChange={this.handleUsernameChange}
-                                label="Username/Email"
-                                value = {this.state.username}
-                                required = {true}
-                            />
-                        </label>
-                        <div className="password-field">
-                            <label className="password">
+                        <div className="divider">
+                            <a className="underline"/>or<a className="underline"/>
+                        </div>
+                        <br/>
+                        <div className="info-field-container">
+                            {
+                                //Divider
+                            }
+                            <label className="username-field">
                                 <TextField
-                                    type="password"
-                                    id = "showPass"
-                                    onChange = {this.handlePasswordChange}
-                                    label="Password"
-                                    value = {this.state.password}
+                                    onChange={this.handleUsernameChange}
+                                    label="Username/Email"
+                                    value = {this.state.username}
                                     required = {true}
                                 />
                             </label>
-                            <label className="hide-password">
-                                <IconButton aria-label="Show Password" 
-                                    onClick= {this.toggleButton}        
-                                    edge="end"
-                                >
-                                {
-                                    this.state.check 
-                                    ? <VisibilityIcon /> 
-                                    : <VisibilityOffIcon />
-                                }
-                                </IconButton>
-                            </label>
+                            <div className="password-field">
+                                <label className="password">
+                                    <TextField
+                                        type="password"
+                                        id = "showPass"
+                                        onChange = {this.handlePasswordChange}
+                                        label="Password"
+                                        value = {this.state.password}
+                                        required = {true}
+                                    />
+                                </label>
+                                <label className="hide-password">
+                                    <IconButton aria-label="Show Password" 
+                                        onClick= {this.toggleButton}        
+                                        edge="end"
+                                    >
+                                    {
+                                        this.state.check 
+                                        ? <VisibilityIcon /> 
+                                        : <VisibilityOffIcon />
+                                    }
+                                    </IconButton>
+                                </label>
+                            </div> 
+                            {
+                                //Forgot password
+                            }
+                            <a href="https://google.com/" className="forgot-password">Forgot Password?</a>
+                            <Button className="login-button" type ="submit">
+                                Sign in
+                            </Button>
+                            <br/>
+                            {
+                                //sign up
+                            }
+                            <div className="not-member">
+                                <span>Not a member? </span>
+                                <a href="https://google.com/" className="signup">Sign up</a>
+                            </div>
                         </div> 
-                        {
-                            //Forgot password
-                        }
-                        <a href="https://google.com/" className="forgot-password">Forgot Password?</a>
-                        <Button className="login-button" type ="submit">
-                            Sign in
-                        </Button>
-                        <br/>
-                        {
-                            //sign up
-                        }
-                        <div className="not-member">
-                            <span>Not a member? </span>
-                            <a href="https://google.com/" className="signup">Sign up</a>
-                        </div>
-                    </div> 
-                
-                </form>
-                
+                    
+                    </form>
+                    
+                </div>
             </div>
         )
     }
