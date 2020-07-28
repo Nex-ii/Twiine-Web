@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Typography } from '@material-ui/core';
-import '../CSS/AboutUs.css';
 
 export class AboutUs extends Component {
     render() {
