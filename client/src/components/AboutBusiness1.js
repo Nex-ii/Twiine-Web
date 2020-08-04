@@ -199,7 +199,7 @@ const AboutBusiness1 = (props) => {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="What industry are you in?"
+                  label="Industry"
                   placeholder="e.g. Cafe"
                   required
                   error={industryError.length === 0 ? false : true}

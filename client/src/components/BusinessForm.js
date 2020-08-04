@@ -54,7 +54,6 @@ function BusinessForm() {
   const [line1, setLine1] = useState("");
   const [line2, setLine2] = useState("");
   const [city, setCity] = useState("");
-  // const [address, setAddress] = useState({});
   const updateLine1 = (line1AB1) => {
     setLine1(line1AB1);
     setAddress({
@@ -103,6 +102,7 @@ function BusinessForm() {
   const [description, setDescription] = useState("");
   const [moods, setMoods] = useState([]);
   const [styles, setStyles] = useState([]);
+  const [features, setFeatures] = useState([]);
   const updateKnownFor = (knownForAB2) => {
     setKnownFor(knownForAB2);
   };
@@ -115,7 +115,9 @@ function BusinessForm() {
   const updateStyles = (stylesAB2) => {
     setStyles(stylesAB2);
   };
-
+  const updateFeatures = (featuresAB2) => {
+    setFeatures(featuresAB2);
+  };
   // Values retrieved and assigned from ./BusinessPlan
   const [plan, setPlan] = useState("");
   const updatePlan = (planBP) => {
@@ -145,6 +147,8 @@ function BusinessForm() {
             parentDescription={updateDescription}
             parentMoods={updateMoods}
             parentStyles={updateStyles}
+            industry={industry.title}
+            parentFeatures={updateFeatures}
           />
         );
       case 2:
@@ -184,6 +188,7 @@ function BusinessForm() {
       description: description,
       moods: moods,
       styles: styles,
+      features: features,
       plan: plan,
     }).then(() =>
       console.log("Called cloud function to create a business document")
@@ -221,8 +226,7 @@ function BusinessForm() {
             <p>Business Name: {businessName}</p>
             <p>Industry: {industry.title}</p>
             <p>
-              Address: {line1}
-              {line2}
+              Address: {line1},{line2}
               {city.city}
             </p>
             <p>Known For: {knownFor}</p>
@@ -237,6 +241,12 @@ function BusinessForm() {
               Styles:{" "}
               {styles.map((el, i) => (
                 <span key={i}>{el.style} | </span>
+              ))}
+            </p>
+            <p>
+              Features:{" "}
+              {features.map((el, i) => (
+                <span key={i}>{el} | </span>
               ))}
             </p>
             <p>Plan: {plan}</p>
