@@ -56,7 +56,7 @@ class App extends React.Component{
             <Route path="/register" exact>
               <RegisterAcc />
             </Route>
-            <Route path="/dashboard/:path" exact>
+            <Route path="/dashboard" exact>
               <Dashboard />
             </Route>
           </Switch>
