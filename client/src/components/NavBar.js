@@ -4,22 +4,8 @@ import cx from 'classnames'
 import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            menuOpen: false
-        }
-    }
-
-    onMenuClick = () => {
-        this.setState({
-            menuOpen: !this.state.menuOpen
-        })
-    }
-
     render() {
-        const { menuOpen } = this.state
+        const { onMenuClick, menuOpen } = this.props
 
         return(
             <div className="navbar-container">
@@ -37,7 +23,7 @@ class NavBar extends React.Component {
                                 "burger-menu": true,
                                 "cross": menuOpen
                             })} 
-                            onClick={this.onMenuClick}
+                            onClick={onMenuClick}
                         >
                             <span className="burger-bar top" />
                             <span className="burger-bar middle" />
