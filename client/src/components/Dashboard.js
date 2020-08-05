@@ -1,38 +1,119 @@
 import React from 'react'
-import logo from '../images/logo_white.png';
+import logo from '../images/logo.png';
+import logoWhite from '../images/logo_white.png';
 import avatar from '../images/source4.png';
 import GoogleMapReact from 'google-map-react';
+import { useLocation } from "react-router-dom"
+import cx from 'classnames'
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search)
+}
 
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      expanded: false
+    }
+  }
+
+  onExpandClick = () => {
+    this.setState({
+      expanded: !this.state.expanded
+    })
+  }
+
   render() {
+    const { expanded } = this.state
+
     return (
       <div className="dashboard-container">
-        <div className="sidebar-nav">
-          <div className="burger-menu">
-            <span className="burger-bar top" />
-            <span className="burger-bar middle" />
-            <span className="burger-bar bottom" />
-          </div>
-          <div className="settings-container">
-            <i class="fas fa-columns" />
-            <i class="far fa-comments" />
-            <i class="fas fa-bullhorn" />
-            <i class="fas fa-percent" />
-            <i class="fas fa-users-cog" />
+        <div className={cx({
+          "sidebar-nav": true,
+          "expanded": expanded
+        })}>
+          <div className="nav-icons">
+            <div className={cx({
+              "burger-logo": true,
+              "expanded": expanded
+            })}>
+              <div className="burger-menu" onClick={this.onExpandClick}>
+                <span className="burger-bar top" />
+                <span className="burger-bar middle" />
+                <span className="burger-bar bottom" />
+              </div>
+              <img className={cx({
+                  "white-logo": true,
+                  "expanded": expanded,
+                })} 
+                src={logoWhite} 
+              />
+            </div>
+            <a className={cx({
+              "border": true,
+              "expanded": expanded
+            })} />
+            <div className={cx({
+              "settings-container": true,
+              "expanded": expanded
+            })}>
+              <div className="settings-wrapper">
+                <i class="fas fa-columns" />
+                <span>
+                  Overview
+                </span>
+              </div>
+              <div className="settings-wrapper">
+                <i class="far fa-comments" />
+                <span>
+                  Reviews
+                </span>
+              </div>
+              <div className="settings-wrapper">
+                <i class="fas fa-bullhorn" />
+                <span>
+                  Advertisements
+                </span>
+              </div>
+              <div className="settings-wrapper">
+                <i class="fas fa-percent" />
+                <span>
+                  Promotions
+                </span>
+              </div>
+              <div className="settings-wrapper">
+                <i class="fas fa-users-cog" />
+                <span>
+                  Settings
+                </span>
+              </div>
+            </div>
+            <a className={cx({
+              "border": true,
+              "expanded": expanded
+            })} />
           </div>
         </div>
         <div className="dashboard-main">
           <div className="dashboard-header">
             <div className="logo-search">
-              <img src={logo} />
+              <div className={cx({
+                "logo": true,
+                "expanded": expanded
+              })}>
+                <img src={logo} />
+              </div>
               <div className="search-box">
                 <div className="search-wrapper">
                   <i class="fas fa-search" />
                   <input className="search-field"/>
                 </div>
-                <div className="search-button">
-                  Search
-                </div>
+                <button className="search-button">
+                  <span>
+                    Search
+                  </span>
+                </button>
               </div>
             </div>
             <div className="user-details-container">
@@ -48,7 +129,10 @@ class Dashboard extends React.Component {
               </div>
             </div>
           </div>
-          <div className="dashboard">
+          <div className={cx({
+            "dashboard": true,
+            "nav-bar-expanded": expanded
+          })}>
             <span className="overview">
               Overview
             </span>

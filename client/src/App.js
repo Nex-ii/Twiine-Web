@@ -10,9 +10,6 @@ import NavBar from './components/NavBar.js';
 import RegisterAcc from './components/RegisterAcc.js';
 import './styles/main.scss';
 
-// import ForgotPassword from './components/ForgotPassword.js';
-
-
 class App extends React.Component{
   constructor(props) {
     super(props)
@@ -35,8 +32,6 @@ class App extends React.Component{
       })
     }
   }
-  //rce for components
-  //console.log(test.state.todos)
 
   render() {
     const { menuOpen } = this.state
@@ -61,7 +56,7 @@ class App extends React.Component{
             <Route path="/register" exact>
               <RegisterAcc />
             </Route>
-            <Route path="/temp" exact>
+            <Route path="/dashboard/:path" exact>
               <Dashboard />
             </Route>
           </Switch>
