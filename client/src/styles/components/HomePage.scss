@@ -2,6 +2,184 @@
   width: 100%;
   min-height: 100vh;
 
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+
+    .wrapper-signin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      
+      border-radius: 1.5rem;
+      border-style: solid;
+      border-color: lightgray;
+      width: 45.5rem;
+      height: 35rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      padding: 1.5rem 3.5rem;
+      background: #FFFFFF;
+
+      -webkit-animation-name: slideIn;
+      -webkit-animation-duration: 0.7s;
+      animation-name: slideIn;
+      animation-duration: 0.7s;
+  
+      .title{
+        width: 100px;
+        position: relative;
+        z-index: 5;
+        right:230px;
+      }
+
+      .sign-in-title {
+        font-family: Quicksand;
+        font-style: bold;
+        font-weight: 500;
+        font-size: 20px;
+        padding-bottom: 1.5rem;
+        color: black;
+      }
+
+      .login-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+  
+        a {
+          text-decoration: none;
+        }
+        .info-field-container {
+          display: flex;
+          flex-direction: column;
+          align-items: left;
+          
+  
+          .username-field {
+            display: flex;
+            padding-bottom: 0.5rem;
+            width: 100%;
+          }
+          #username-textfield{
+            height: 25px;
+          }
+  
+          .password-field {
+            width: 100%;
+  
+            .hide-password {
+              position: absolute;
+            }
+          }
+  
+          #showPass{
+            height: 25px;
+          }
+  
+          .forgot-password {
+            padding-top: 4px;
+            padding-bottom: 1rem;
+  
+              span {
+                font-family: 'acumin-pro';
+                font-weight: normal;
+              }
+          }
+  
+          .login-button {
+            background: #eb5834;
+            border: 0;
+            color: white;
+            height: 100%;
+            width:  20%;
+            box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+            align-self: center;
+          }
+        }
+      }
+  
+      .divider {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+  
+        .underline {
+          background-color: grey;
+          height: 1px;
+          width: 45%;
+          margin: 0.625rem;
+        }
+      }
+  
+      #firebaseui-auth-container{
+        .firebaseui-container {
+          max-width: unset;
+          padding-bottom: 0;
+        }
+  
+        .firebaseui-card-content {
+          padding: 0;
+          width: 100%;
+  
+          .firebaseui-list-item {
+            display: flex;
+            padding: 0 1.25rem;
+  
+            .firebaseui-id-idp-button {
+              display: flex;
+              align-items: center;
+              border-radius: 1.5rem;
+              justify-content: center;
+              max-width: unset;
+              width: 15rem;
+            }
+          }
+        }
+        .firebaseui-list-item
+        {
+          display: inline-block !important;
+        }
+      }
+    }
+  }
+
+
+
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   .register-button {
     top: 55vh;
     color: white;
@@ -17,4 +195,26 @@
       font-family: barlow, sans-serif;
     }
   }
+
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {top: 0px; opacity: 0} 
+  to {top: 50%; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {top: 0px; opacity: 0}
+  to {top: 50%; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
 }
