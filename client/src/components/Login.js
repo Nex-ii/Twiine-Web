@@ -115,11 +115,15 @@ export class Login extends Component {
     render() {
         return (
             <div className = "wrapper-loginpage">
-                <img src = {infinity} className = "infinity"/>
-                <img src = {logo} className = "logo-large"/>
-                <div className = "business-login">Business Login</div>
+                <img src = {infinity} className = "infinity" alt = "infinity."/>
+                {
+                    /*
+                    <img src = {logo} className = "logo-large" alt = "logo."/>
+                    <div className = "business-login">Business Login</div>
+                    */
+                }
                 <div className="wrapper-signin">
-                    <img src = {logo} className = "title"></img>
+                    <img src = {logo} className = "title" alt = "title."></img>
                     <div className="sign-in-title">Sign in to Twiine</div>
                     {
                         //Google and facebook button
@@ -143,6 +147,9 @@ export class Login extends Component {
                                     label="Username/Email"
                                     value = {this.state.username}
                                     required = {true}
+                                    fullWidth= {true}
+                                    id = "username-textfield"
+                                    
                                 />
                             </label>
                             <div className="password-field">
@@ -154,6 +161,7 @@ export class Login extends Component {
                                         label="Password"
                                         value = {this.state.password}
                                         required = {true}
+                                        fullWidth = {true}
                                     />
                                 </label>
                                 <label className="hide-password">

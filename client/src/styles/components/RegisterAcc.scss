@@ -1,4 +1,7 @@
 .register-container {
+  position: fixed;
+  align-self: center;
+  top: 15rem;
   display: flex;
   flex-direction: column;
   justify-items: left;
@@ -6,19 +9,20 @@
   border: solid lightgrey;
   padding: 1.5rem 3.5rem;
   width: 37.5rem;
-  height: 34.5rem;
+  height: 35.5rem;
+  background: #FFFFFF;
 
-  .title {
-    color: red;
-    font-family: 'acumin-pro';
-    font-weight: normal;
-    font-size: 1.5rem;
-  }
+  .title{
+    //height: 0px;
+    width: 100px;
+    float: center;
+  } 
 
   .sign-in-title{
-    font-family: 'acumin-pro';
-    font-size: 1.25rem;
-    font-weight: bold;
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
   }
 
   .divider {
@@ -105,6 +109,7 @@
       .password-field {
         display: flex;
         flex-direction: row;
+        width: 90%;
 
         .MuiFormControl-root {
           width: 31.5rem;
