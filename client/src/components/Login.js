@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { firebase } from '../database';
 import { ui, uiConfig } from '../FirebaseUI';
 import infinity from '../images/infinity_1.png';
-import logo from '../images/logo_white.png';
+import logo from '../images/logo.png';
 import '../styles/components/Login.scss';
 
 export class Login extends Component {

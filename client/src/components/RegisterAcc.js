@@ -7,8 +7,9 @@ import {db, firebase} from '../database';
 import TextField from '@material-ui/core/TextField';
 import {CustomTooltip} from '../CSS/RegisterAccCSS.js';
 import {ui, uiConfig} from '../FirebaseUI';
-import logo from '../images/logo_white.png';
+import logo from '../images/logo.png';
 import '../styles/components/RegisterAcc.scss';
+import infinity from '../images/infinity_1.png';
 
 /*TODO:
     - Check for username taken 
@@ -251,6 +252,7 @@ export class RegisterAcc extends Component {
     render() {
         return (
             <div className="register-container">
+                <img src = {infinity} className = "infinity" alt = "infinity."/>
                 <img src = {logo} className = "title" alt = "title."></img>
                 <div className="sign-in-title">Sign in to Twiine</div>
                 {

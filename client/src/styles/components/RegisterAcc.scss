@@ -1,6 +1,7 @@
 .register-container {
-  position: fixed;
-  align-self: center;
+  position: relative;
+  align-self: flex-end;
+  margin-right: 10%;
   top: 15rem;
   display: flex;
   flex-direction: column;
@@ -11,6 +12,22 @@
   width: 37.5rem;
   height: 35.5rem;
   background: #FFFFFF;
+  
+  .infinity{
+    position:fixed;
+    left:0px;
+    top: 7rem;
+    /*
+    right:100%;
+    top: 5rem;
+    width:50%;
+    */
+    transform: scaleX(-1);
+    
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    z-index: -1;
+  }
 
   .title{
     //height: 0px;
