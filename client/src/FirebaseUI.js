@@ -6,9 +6,27 @@ var firebaseui = require('firebaseui');
   //Initialize UI for authentification
   var uiConfig = {
     callbacks: {
-      
+      //If they have successfully logged into their google account then their email has been successfully verified
+      signInSuccessWithAuthResult(authResult, redirectUrl){
+        
+        //Verify their email after they have successfully logged into google, that way google doesn't override (only if their not verified)
+        if(!authResult.user.emailVerified){
+          var verifiedEmail = firebase.functions().httpsCallable('verifiedUser');
+
+          verifiedEmail({})
+          .then(function() {
+            console.log("called cloud function to verifiedUser");
+          })
+          .catch(function(error) {
+            // Getting the Error details.
+
+            // ...
+            console.log("error calling cloud function: " + error);
+          });
+        }
+      }
     },
-    signInSuccessUrl: '<url-to-redirect-to-on-success>',
+    signInSuccessUrl: '<url-to-redirect-to-on-success>', 
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,

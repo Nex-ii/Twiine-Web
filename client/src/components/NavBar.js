@@ -4,6 +4,19 @@ import cx from 'classnames'
 import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
+
+    displayLoginModal = (event) =>
+    {
+        let modal = document.getElementsByClassName('modal');
+        let login = document.getElementsByClassName('wrapper-signin');
+        
+        modal[0].style.display = "block";
+        modal[0].style.zIndex = 1;
+        login[0].style.display = "block";
+        login[0].style.zIndex = 2;
+
+    }
+
     render() {
         const { onMenuClick, menuOpen } = this.props
 
@@ -14,11 +27,10 @@ class NavBar extends React.Component {
                         <img src={logo} alt=""/>
                     </Link>
                     <div className="button-wrapper">
-                        <Link to="/login">
-                            <div className="login-button">
-                                Login
-                            </div>
-                        </Link>
+                        <div className="login-button" onClick = {this.displayLoginModal}>
+                            Login
+                        </div>
+                        
                         <div className={cx({
                                 "burger-menu": true,
                                 "cross": menuOpen
