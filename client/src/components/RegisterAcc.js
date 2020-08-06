@@ -254,7 +254,7 @@ export class RegisterAcc extends Component {
             <div className="register-container">
                 <img src = {infinity} className = "infinity" alt = "infinity."/>
                 <img src = {logo} className = "title" alt = "title."></img>
-                <div className="sign-in-title">Sign in to Twiine</div>
+                <div className="sign-in-title">Join the Twiine Business Community</div>
                 {
                     //Google and facebook button
                 }
