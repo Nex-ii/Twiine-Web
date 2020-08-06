@@ -5,7 +5,6 @@ import AboutUs from './components/AboutUs.js';
 import ContactUs from './components/ContactUs.js';
 import Dashboard from './components/Dashboard';
 import HomePage from './components/HomePage.js';
-import Login from './components/Login.js';
 import NavBar from './components/NavBar.js';
 import RegisterAcc from './components/RegisterAcc.js';
 import './styles/main.scss';
@@ -49,9 +48,6 @@ class App extends React.Component{
             </Route>
             <Route path="/contact" exact>
               <ContactUs />
-            </Route>
-            <Route path="/login" exact>
-              <Login />
             </Route>
             <Route path="/register" exact>
               <RegisterAcc />
