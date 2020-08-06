@@ -6,7 +6,7 @@
   .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 2; /* Sit on top */
+    z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -19,7 +19,7 @@
     -webkit-animation-duration: 0.4s;
     animation-name: fadeIn;
     animation-duration: 0.4s;
-
+  }
     .wrapper-signin {
       position: absolute;
       top: 50%;
@@ -38,16 +38,21 @@
       padding: 1.5rem 3.5rem;
       background: #FFFFFF;
 
+      display: none;
+
+
       -webkit-animation-name: slideIn;
       -webkit-animation-duration: 0.7s;
       animation-name: slideIn;
       animation-duration: 0.7s;
+
   
       .title{
         width: 100px;
         position: relative;
         z-index: 5;
-        right:230px;
+        //right:230px;
+        right:0.5rem;
       }
 
       .sign-in-title {
@@ -161,24 +166,6 @@
         }
       }
     }
-  }
-
-
-
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
 
   .register-button {
     top: 55vh;
@@ -198,6 +185,11 @@
 
 }
 
+.wrapper-signin.show {
+  top: 0;
+  opacity: 1;
+}
+
 /* Add Animation */
 @-webkit-keyframes slideIn {
   from {top: 0px; opacity: 0} 
@@ -207,6 +199,16 @@
 @keyframes slideIn {
   from {top: 0px; opacity: 0}
   to {top: 50%; opacity: 1}
+}
+
+@-webkit-keyframes slideOut {
+  from {top: 50%; opacity: 1} 
+  to {top: 0px; opacity: 0}
+}
+
+@keyframes slideOut {
+  from {top: 50%; opacity: 1}
+  to {top: 0px; opacity: 0}
 }
 
 @-webkit-keyframes fadeIn {

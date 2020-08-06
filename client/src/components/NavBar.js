@@ -7,9 +7,14 @@ class NavBar extends React.Component {
 
     displayLoginModal = (event) =>
     {
-        console.log(document.getElementById('loginModal'))
-        let modal = document.getElementById('loginModal');
-        modal.style.display = "block";
+        let modal = document.getElementsByClassName('modal');
+        let login = document.getElementsByClassName('wrapper-signin');
+        
+        modal[0].style.display = "block";
+        modal[0].style.zIndex = 1;
+        login[0].style.display = "block";
+        login[0].style.zIndex = 2;
+
     }
 
     render() {

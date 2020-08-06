@@ -119,10 +119,12 @@ class HomePage extends React.Component{
    }
     closeModal = (event) =>
     {
-        let modal = document.getElementById('loginModal');
-        //let registerButton = document.getElementById('button-register');
-        modal.style.display = "none";
-        //registerButton.style.zIndex = 1;
+        let modal = document.getElementsByClassName('modal');
+        let login = document.getElementsByClassName('wrapper-signin');
+        
+        modal[0].style.display = "none";
+        login[0].style.display = "none";
+
     }
 
     render() {
@@ -135,83 +137,83 @@ class HomePage extends React.Component{
                     duration={4} transition={0.5}
                 />
                 <CssBaseline />
-                <div id="loginModal" class="modal">
-                    <div className="wrapper-signin">
-                        <img src = {logo} className = "title" alt = "title."></img>
-                        <div className="sign-in-title">Sign in to Twiine</div>
+                <div id="loginModal" className="modal" onClick = {this.closeModal}></div>
+                <div className="wrapper-signin">
+                    <img src = {logo} className = "title" alt = "title."></img>
+                    <div className="sign-in-title">Sign in to Twiine</div>
+                    {
+                        //Google and facebook button
+                    }
+                    <form onSubmit={this.handleSubmit} className="login-container">
+                        <div id="firebaseui-auth-container"/>
                         {
                             //Google and facebook button
                         }
-                        <form onSubmit={this.handleSubmit} className="login-container">
-                            <div id="firebaseui-auth-container"/>
+                        <div className="divider">
+                            <a className="underline"/>or<a className="underline"/>
+                        </div>
+                        <br/>
+                        <div className="info-field-container">
                             {
-                                //Google and facebook button
+                                //Divider
                             }
-                            <div className="divider">
-                                <a className="underline"/>or<a className="underline"/>
-                            </div>
-                            <br/>
-                            <div className="info-field-container">
-                                {
-                                    //Divider
-                                }
-                                <label className="username-field">
+                            <label className="username-field">
+                                <TextField
+                                    onChange={this.handleUsernameChange}
+                                    label="Username/Email"
+                                    value = {this.state.username}
+                                    required = {true}
+                                    fullWidth= {true}
+                                    id = "username-textfield"
+                                    
+                                />
+                            </label>
+                            <div className="password-field">
+                                <label className="password">
                                     <TextField
-                                        onChange={this.handleUsernameChange}
-                                        label="Username/Email"
-                                        value = {this.state.username}
+                                        type="password"
+                                        id = "showPass"
+                                        onChange = {this.handlePasswordChange}
+                                        label="Password"
+                                        value = {this.state.password}
                                         required = {true}
-                                        fullWidth= {true}
-                                        id = "username-textfield"
-                                        
+                                        fullWidth = {true}
                                     />
                                 </label>
-                                <div className="password-field">
-                                    <label className="password">
-                                        <TextField
-                                            type="password"
-                                            id = "showPass"
-                                            onChange = {this.handlePasswordChange}
-                                            label="Password"
-                                            value = {this.state.password}
-                                            required = {true}
-                                            fullWidth = {true}
-                                        />
-                                    </label>
-                                    <label className="hide-password">
-                                        <IconButton aria-label="Show Password" 
-                                            onClick= {this.toggleButton}        
-                                            edge="end"
-                                        >
-                                        {
-                                            this.state.check 
-                                            ? <VisibilityIcon /> 
-                                            : <VisibilityOffIcon />
-                                        }
-                                        </IconButton>
-                                    </label>
-                                </div> 
-                                {
-                                    //Forgot password
-                                }
-                                <a href="https://google.com/" className="forgot-password">Forgot Password?</a>
-                                <Button className="login-button" type ="submit">
-                                    Sign in
-                                </Button>
-                                <br/>
-                                {
-                                    //sign up
-                                }
-                                <div className="not-member">
-                                    <span>Not a member? </span>
-                                    <a href="https://google.com/" className="signup">Sign up</a>
-                                </div>
+                                <label className="hide-password">
+                                    <IconButton aria-label="Show Password" 
+                                        onClick= {this.toggleButton}        
+                                        edge="end"
+                                    >
+                                    {
+                                        this.state.check 
+                                        ? <VisibilityIcon /> 
+                                        : <VisibilityOffIcon />
+                                    }
+                                    </IconButton>
+                                </label>
                             </div> 
-                        
-                        </form>
-                        
-                    </div>
+                            {
+                                //Forgot password
+                            }
+                            <a href="https://google.com/" className="forgot-password">Forgot Password?</a>
+                            <Button className="login-button" type ="submit">
+                                Sign in
+                            </Button>
+                            <br/>
+                            {
+                                //sign up
+                            }
+                            <div className="not-member">
+                                <span>Not a member? </span>
+                                <a href="https://google.com/" className="signup">Sign up</a>
+                            </div>
+                        </div> 
+                    
+                    </form>
+                    
                 </div>
+                
                 <Link to="/register">
                 <Button className="register-button" id = "button-register">
                     <Typography className="register-text">
