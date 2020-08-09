@@ -119,6 +119,10 @@
             align-self: center;
           }
         }
+        .not-member{
+          padding: 0.5rem;
+          align-self: center;
+        }
       }
   
       .divider {
@@ -135,6 +139,7 @@
           margin: 0.625rem;
         }
       }
+      
   
       #firebaseui-auth-container{
         .firebaseui-container {
