@@ -8,6 +8,7 @@ import HomePage from './components/HomePage.js';
 import NavBar from './components/NavBar.js';
 import RegisterAcc from './components/RegisterAcc.js';
 import './styles/main.scss';
+import HomePageAlt from './components/HomePageAlt';
 
 class App extends React.Component{
   constructor(props) {
@@ -39,8 +40,8 @@ class App extends React.Component{
         <div className="App">
           <Switch>
             <Route path="/" exact>
-              <NavBar menuOpen={menuOpen} onMenuClick={this.onMenuClick}/>
-              <HomePage closeMenuClick={this.closeMenuClick}/>
+              {/* <NavBar menuOpen={menuOpen} onMenuClick={this.onMenuClick}/> */}
+              <HomePageAlt closeMenuClick={this.closeMenuClick}/>
             </Route>
             <Route path="/about" exact>
               <NavBar menuOpen={menuOpen} ononMenuClick={this.onMenuClick}/>
