@@ -37,10 +37,8 @@ class HomePageAlt extends React.Component {
   }
 
   render() {
-    const { closeMenuClick } = this.props
-
     return(
-      <div className="home-page-alt-container" onClick={closeMenuClick}>
+      <div className="home-page-alt-container">
         <div className="graphic-container">
         </div>
         <div className="main-wrapper">
