@@ -1,15 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import AboutUs from './components/AboutUs.js';
 import { Tablet, TabletLand } from './components/constants/screenWidth';
-import ContactUs from './components/ContactUs.js';
-import Dashboard from './components/Dashboard';
-import { unlockScroll, lockScroll } from './components/helper/screenLock';
-import HomePageAlt from './components/HomePageAlt';
+import { lockScroll, unlockScroll } from './components/helper/screenLock';
 import LandingPage from './components/LandingPage';
-import NavBar from './components/NavBar.js';
-import RegisterAcc from './components/RegisterAcc.js';
 import './styles/main.scss';
 
 class App extends React.Component{
@@ -93,30 +86,9 @@ class App extends React.Component{
   render() {
     const { menuOpen, viewMode, scrollUp } = this.state
     return (
-      <Router>
         <div className="App">
-          {/* <Switch>
-            <Route path="/" exact> */}
-              {/* <NavBar menuOpen={menuOpen} onMenuClick={this.onMenuClick}/> */}
-              <LandingPage menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} scrollUp={scrollUp} scrollToTop={this.scrollToTop}/>
-              {/* <HomePageAlt /> */}
-            {/* </Route>
-            <Route path="/about" exact>
-              <NavBar menuOpen={menuOpen} ononMenuClick={this.onMenuClick}/>
-              <AboutUs closeMenuClick={this.closeMenuClick}/>
-            </Route>
-            <Route path="/contact" exact>
-              <ContactUs />
-            </Route>
-            <Route path="/register" exact>
-              <RegisterAcc />
-            </Route>
-            <Route path="/dashboard" exact>
-              <Dashboard />
-            </Route>
-          </Switch> */}
+          <LandingPage menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} scrollUp={scrollUp} scrollToTop={this.scrollToTop}/>
         </div>
-      </Router>
     );
   }
 }
