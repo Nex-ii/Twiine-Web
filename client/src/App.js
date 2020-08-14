@@ -95,11 +95,12 @@ class App extends React.Component{
     return (
       <Router>
         <div className="App">
-          <Switch>
-            <Route path="/" exact>
+          {/* <Switch>
+            <Route path="/" exact> */}
               {/* <NavBar menuOpen={menuOpen} onMenuClick={this.onMenuClick}/> */}
-              <HomePageAlt />
-            </Route>
+              <LandingPage menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} scrollUp={scrollUp} scrollToTop={this.scrollToTop}/>
+              {/* <HomePageAlt /> */}
+            {/* </Route>
             <Route path="/about" exact>
               <NavBar menuOpen={menuOpen} ononMenuClick={this.onMenuClick}/>
               <AboutUs closeMenuClick={this.closeMenuClick}/>
@@ -113,10 +114,7 @@ class App extends React.Component{
             <Route path="/dashboard" exact>
               <Dashboard />
             </Route>
-            <Route path="/landing" exact>
-              <LandingPage menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} scrollUp={scrollUp} scrollToTop={this.scrollToTop}/>
-            </Route>
-          </Switch>
+          </Switch> */}
         </div>
       </Router>
     );
