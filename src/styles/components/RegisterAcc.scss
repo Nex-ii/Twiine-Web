@@ -1,0 +1,168 @@
+body{
+  background-color:  #000000;
+}
+.register-container {
+  position: relative;
+  align-self: flex-end;
+  margin-right: 10%;
+  top: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-items: left;
+  border-radius: 5%;
+  border: solid lightgrey;
+  padding: 1.5rem 3.5rem;
+  width: 37.5rem;
+  height: 35.5rem;
+  background: #FFFFFF;
+  
+  .infinity{
+    position:fixed;
+    left:0px;
+    top: 7rem;
+    /*
+    right:100%;
+    top: 5rem;
+    width:50%;
+    */
+    transform: scaleX(-1);
+    
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    z-index: -1;
+  }
+
+  .title{
+    //height: 0px;
+    width: 100px;
+    float: center;
+  } 
+
+  .sign-in-title{
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .divider {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .underline {
+      background-color: grey;
+      height: 1px;
+      width: 45%;
+      margin: 0.625rem;
+    }
+  }
+
+  #firebaseui-auth-container{
+    display: flex;
+    align-self: center;
+
+    .firebaseui-container {
+      max-width: unset;
+      padding-bottom: 0;
+    }
+
+    .firebaseui-card-content {
+      padding: 0;
+      width: 100%;
+
+      .firebaseui-list-item {
+        display: flex;
+        padding: 0 1.25rem;
+
+        .firebaseui-id-idp-button {
+          display: flex;
+          align-items: center;
+          border-radius: 1.5rem;
+          justify-content: center;
+          max-width: unset;
+          width: 15rem;
+        }
+      }
+    }
+    .firebaseui-list-item
+    {
+      display: inline-block !important;
+    }
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+
+    .name-wrapper {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+
+      #firstName {
+        width: 9.375rem;
+      }
+
+      #middleName {
+        width: 6.25rem;
+      }
+
+      #lastName {
+        width: 9.375rem;
+      }
+    }
+
+    .verify-container {
+      padding: 0 3rem;
+      display: flex;
+      text-align: left;
+      flex-direction: column;
+      padding-bottom: 1rem;
+
+      .MuiFormControl-root {
+        width: 100%;
+      }
+
+      .password-field {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+
+        .MuiFormControl-root {
+          width: 31.5rem;
+        }
+
+        .hide-password {
+          position: absolute;
+          margin-left: 28.5rem;
+        }
+      }
+    }
+  }
+}
+
+/*======== CSS for portrait style on mobile ============= */
+
+@media screen and (orientation:portrait) and (max-width: 414px){
+  
+  #wrapper {
+      border-radius: 25px;
+      border-style: solid;
+      border-color: lightgray;
+      width: 600px;
+      height: 550px;
+  
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(65%, 65%);
+  }
+
+  #firebaseui-auth-container{
+      position: relative;
+      left: 4%;
+  }
+}

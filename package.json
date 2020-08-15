@@ -1,31 +1,44 @@
 {
-  "name": "twiine-web",
-  "version": "1.0.0",
-  "description": "This is the respository for twiine web application",
-  "main": "server.js",
-  "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Nex-ii/Twiine-Web.git"
-  },
-  "author": "Twiine Web Dev Team",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Nex-ii/Twiine-Web/issues"
-  },
-  "homepage": "https://github.com/Nex-ii/Twiine-Web#readme",
+  "name": "twiine",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "concurrently": "^5.2.0",
-    "express": "^4.17.1"
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "^4.9.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "classnames": "^2.2.6",
+    "firebase": "^7.15.5",
+    "firebaseui": "^4.5.1",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-background-slider": "^2.0.0",
+    "react-button": "^1.2.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-slideshow-image": "^1.5.3"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
