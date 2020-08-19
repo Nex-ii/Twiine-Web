@@ -7,9 +7,19 @@ import Dashboard from './components/Dashboard';
 import HomePage from './components/HomePage.js';
 import NavBar from './components/NavBar.js';
 import RegisterAcc from './components/RegisterAcc.js';
+import {Charts} from './components/Charts.js';
 import './styles/main.scss';
 
 class App extends React.Component{
+  render(){
+    return(
+        <div className = "app">
+          <Charts></Charts>
+        </div>
+        
+    )
+  }
+  /*
   constructor(props) {
     super(props)
 
@@ -60,6 +70,7 @@ class App extends React.Component{
       </Router>
     );
   }
+  */
 }
 
 export default App;
