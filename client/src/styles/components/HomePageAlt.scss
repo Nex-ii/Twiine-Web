@@ -1,0 +1,188 @@
+.home-page-alt-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  font-family: Source Sans Pro;
+  background-color: white;
+
+  .graphic-container {
+    display: flex;
+    width: 100%;
+    background-color: #d8bdbd;
+
+    @media screen and (max-width: $tablet){
+      display: none;
+    }
+  }
+
+  .main-wrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 3rem;
+
+      @media screen and (min-width: $tablet){
+        padding: 0 5rem;
+      }
+
+      .header {
+        display: flex;
+        justify-content: start;
+        font-family: Raleway;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding-bottom: 1rem;
+
+        @media screen and (min-width: $tablet){
+          font-size: 2rem;
+        }
+      }
+
+      .alt-auth-container {
+        display: flex;
+        flex-direction: column;
+
+        .auth-button {
+          display: flex;
+          cursor: pointer;
+          flex-direction: row;
+          border: solid 1px #8B8B8B;
+          border-radius: 0.5rem;
+          padding: 0.5rem 0.5rem;
+          margin-bottom: 1rem;
+          color: #8B8B8B;
+          transition: all 0.3s;
+
+          @media screen and (min-width: $tablet){
+            padding: 0.75rem 0.5rem;
+          }
+
+          &:last-child {
+            margin-bottom: 1rem;
+
+            @media screen and (min-width: $tablet){
+              margin-bottom: 2rem;
+            }
+          }
+
+          img {
+            height: 1.5rem;
+            width: 1.5rem;
+
+            @media screen and (min-width: $tablet){
+              height: 2rem;
+              width: 2rem;
+            }
+          }
+
+          span {
+            font-size: 0.75rem;
+            width: 100%;
+            padding-right: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+
+            @media screen and (min-width: $tablet){
+              font-size: 1.25rem;
+            }
+          }
+
+          &:hover {
+            background-color: #d8bdbd;
+            color: #F64E5A;
+          }
+        }
+      }
+  
+      .divider-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #8B8B8B;
+        font-size: 0.75rem;
+
+        @media screen and (min-width: $tablet){
+          font-size: 1.25rem;
+        }
+  
+        .divider-line {
+          height: 1px;
+          width: 100%;
+          background-color: #8B8B8B;
+          margin: 0 0.5rem;
+        }
+      }
+
+      .password-field {
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (min-width: $tablet){
+          margin-top: 1rem;
+        }
+
+        .forgot-password {
+          display: flex;
+          justify-content: flex-end;
+          font-size: 0.6rem;
+          padding-bottom: 0.2rem;
+        }
+      }
+
+      .input-field {
+        font-family: Source Sans Pro;
+        margin-top: 1rem;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        border: solid 1px #8B8B8B;
+        transition: border 0.2s;
+
+        @media screen and (min-width: $tablet){
+          margin-top: 2rem;
+          font-size: 1.25rem;
+        }
+
+        &#Password {
+          margin-top: 0;
+        }
+
+        &.submit {
+          cursor: pointer;
+          padding: 0.75rem 1rem;
+          background-color: #F64E5A;
+          border: solid 1px #F64E5A;
+          font-family: Raleway;
+          font-weight: bold;
+          color: white;
+          margin-bottom: 1rem;
+        }
+
+        &:focus {
+          border: solid 1px #F64E5A;
+          outline: unset;
+        }
+
+        &:active {
+          border: solid 1px #F64E5A;
+          outline: unset;
+        }
+      }
+
+      .register {
+        color: #8B8B8B;
+      }
+    }
+  }
+}
