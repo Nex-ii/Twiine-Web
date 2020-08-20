@@ -1,5 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
+import { Route, Link } from 'react-router-dom'
 
 class LandingPage extends React.Component {
   render() {
@@ -71,9 +72,11 @@ class LandingPage extends React.Component {
             <span>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed porttitor sapien.
             </span>
-            <div className="button">
-              Get Started
-            </div>
+            <Link to="/Newsletter">
+              <div className="button" >
+                Get Started
+              </div>
+            </Link>
           </div>
           <div className="image-container">
             <img className="get-started-img" src="getstarted.svg" />

@@ -10,19 +10,11 @@ import HomePageAlt from './components/HomePageAlt';
 import LandingPage from './components/LandingPage';
 import NavBar from './components/NavBar.js';
 import RegisterAcc from './components/RegisterAcc.js';
-import {Charts} from './components/Charts.js';
 import './styles/main.scss';
 
+import Newsletter from './components/Newsletter.js'
+
 class App extends React.Component{
-  render(){
-    return(
-        <div className = "app">
-          <Charts></Charts>
-        </div>
-        
-    )
-  }
-  /*
   constructor(props) {
     super(props)
 
@@ -105,12 +97,16 @@ class App extends React.Component{
     return (
       <Router>
         <div className="App">
-          {/* <Switch>
-            <Route path="/" exact> */}
+           <Switch>
+            <Route path="/" exact>
               {/* <NavBar menuOpen={menuOpen} onMenuClick={this.onMenuClick}/> */}
               <LandingPage menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} scrollUp={scrollUp} scrollToTop={this.scrollToTop}/>
               {/* <HomePageAlt /> */}
-            {/* </Route>
+            </Route>
+            <Route path="/Newsletter" exact>
+              <Newsletter/>
+            </Route>
+            {/*
             <Route path="/about" exact>
               <NavBar menuOpen={menuOpen} ononMenuClick={this.onMenuClick}/>
               <AboutUs closeMenuClick={this.closeMenuClick}/>
@@ -124,12 +120,12 @@ class App extends React.Component{
             <Route path="/dashboard" exact>
               <Dashboard />
             </Route>
-          </Switch> */}
+            */}
+          </Switch> 
         </div>
       </Router>
     );
   }
-  */
 }
 
 export default App;
