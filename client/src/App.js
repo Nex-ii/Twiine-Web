@@ -13,6 +13,7 @@ import RegisterAcc from './components/RegisterAcc.js';
 import './styles/main.scss';
 
 import Newsletter from './components/Newsletter.js'
+import { Charts } from './components/Charts.js';
 
 class App extends React.Component{
   constructor(props) {
@@ -97,15 +98,15 @@ class App extends React.Component{
     return (
       <Router>
         <div className="App">
-           <Switch>
-            <Route path="/" exact>
+           {/*<Switch>*/}
+            {/*<Route path="/" exact>*/}
               {/* <NavBar menuOpen={menuOpen} onMenuClick={this.onMenuClick}/> */}
-              <LandingPage menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} scrollUp={scrollUp} scrollToTop={this.scrollToTop}/>
+              {/*<LandingPage menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} scrollUp={scrollUp} scrollToTop={this.scrollToTop}/>*/}
               {/* <HomePageAlt /> */}
-            </Route>
-            <Route path="/Newsletter" exact>
-              <Newsletter/>
-            </Route>
+            {/*</Route>*/}
+            {/*<Route path="/Newsletter" exact>*/}
+              {/*<Newsletter/>*/}
+            {/*</Route>*/}
             {/*
             <Route path="/about" exact>
               <NavBar menuOpen={menuOpen} ononMenuClick={this.onMenuClick}/>
@@ -121,7 +122,12 @@ class App extends React.Component{
               <Dashboard />
             </Route>
             */}
+        {/*
           </Switch> 
+        */}
+
+        {/*<Charts></Charts>*/}
+        <Dashboard></Dashboard>
         </div>
       </Router>
     );
