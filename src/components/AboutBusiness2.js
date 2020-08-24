@@ -49,6 +49,9 @@ const AboutBusiness2 = (props) => {
   const [stylesError, setStylesError] = useState("");
   const [stylesComp, setStylesComp] = useState(false);
 
+  const [featuresError, setFeaturesError] = useState("");
+  const [featuresComp, setFeaturesComp] = useState(false);
+
   const KNOWN_FOR_LIMIT = 50;
   const [knownForInput, setKnownForInput] = useState("");
   const validateKnownFor = (value) => {
@@ -104,6 +107,33 @@ const AboutBusiness2 = (props) => {
       setStylesError("");
       setStylesComp(true);
       props.parentStyles(Object.values(value));
+    }
+  };
+
+  const validateFeatures = (value) => {
+    if (value.length === 0) {
+      setFeaturesError("Features cannot be left blank");
+      setFeaturesComp(false);
+    } else {
+      setFeaturesError("");
+      setFeaturesComp(true);
+      props.parentFeatures(Object.values(value));
+    }
+  };
+
+  const getFeatures = (industryList, industry) => {
+    let left = 0;
+    let right = industryList.length - 1;
+    while (left <= right) {
+      const mid = left + Math.floor((right - left) / 2);
+      const result = industry.toString().localeCompare(industryList[mid].title);
+
+      // Check if industry is present at middle index
+      if (result === 0) return industryList[mid].categories;
+      // If industry is greater, ignore left half
+      if (result > 0) left = mid + 1;
+      // If industry is smaller, ignore right half
+      else right = mid - 1;
     }
   };
 
@@ -235,6 +265,41 @@ const AboutBusiness2 = (props) => {
                 )}
                 onChange={(e, value) => validateStyles(value)}
               ></Autocomplete>
+              <Autocomplete
+                multiple
+                limitTags={2}
+                id="checkboxes-features"
+                size="small"
+                options={getFeatures(industryList, props.industry)}
+                disableCloseOnSelect
+                getOptionLabel={(option) => option}
+                style={{ width: 300 }}
+                renderOption={(option, { selected }) => (
+                  <React.Fragment>
+                    <Checkbox
+                      icon={icon}
+                      checkedIcon={checkedIcon}
+                      style={{ marginRight: 8 }}
+                      checked={selected}
+                    />
+                    {option}
+                  </React.Fragment>
+                )}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Features"
+                    placeholder="Your features here:"
+                    required
+                    error={featuresError.length === 0 ? false : true}
+                    helperText={featuresError}
+                    color="secondary"
+                    variant="outlined"
+                    size="small"
+                  />
+                )}
+                onChange={(e, value) => validateFeatures(value)}
+              ></Autocomplete>
             </div>
           </div>
 
@@ -251,7 +316,13 @@ const AboutBusiness2 = (props) => {
             <Button
               variant="contained"
               disabled={
-                !(knownForComp & descriptionComp & moodsComp & stylesComp)
+                !(
+                  knownForComp &
+                  descriptionComp &
+                  moodsComp &
+                  stylesComp &
+                  featuresComp
+                )
               }
               onClick={(e) => {
                 e.preventDefault();
@@ -272,6 +343,9 @@ const moodList = moods.moods;
 
 const styles = require("./helper/styles");
 const styleList = styles.styles;
+
+const industries = require("./helper/industries");
+const industryList = industries.industries;
 
 const labelStyle = {
   color: "#c10000",
