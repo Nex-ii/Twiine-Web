@@ -1,0 +1,539 @@
+.landing-page-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  font-family: Source Sans Pro;
+  background-color: #F64E5A;
+  overflow-y: visible;
+  overflow-x: hidden;
+
+  .scroll-top {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    background-color: white;
+    color: #F64E5A;
+    border-radius: 50%;
+    height: 4.5rem;
+    width: 4.5rem;
+    font-size: 5rem;
+    z-index: 11;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 2rem;
+    right: 2rem;
+    transition: all 0.3s;
+    -webkit-box-shadow: 0 5px 5px -2px black;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow: 0 5px 5px -2px black;  /* Firefox 3.5 - 3.6 */
+    box-shadow: 0 5px 5px -2px black;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+
+    &.active {
+      opacity: 1;
+      pointer-events: unset;
+      cursor: pointer;
+    }
+  }
+
+  .landing-navbar-container {
+    display: flex;
+    position: absolute;
+    padding: 1rem 2rem;
+    height: 5rem;
+    width: calc(100% - 4rem);
+    justify-content: space-between;
+    background-color: white;
+    z-index: 10;
+
+    .burger-menu {
+      cursor: pointer;
+      display: flex;
+      margin-left: 2rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 4rem;
+      height: 4rem;
+
+      .burger-bar {
+        border-radius: 1rem;
+        padding: 0 0.25rem;
+        width: 100%;
+        height: 0.6rem;
+        background-color: black;
+        transition: background-color 0.3s, transform 0.3s, width 0.3s, opacity linear;
+      }
+
+      &:hover {
+        .burger-bar {
+          background-color: #F64E5A;
+        }
+      }
+
+      &.cross {
+        .burger-bar {
+          &.top {
+            transform: translateY(1.1rem) rotate(45deg);
+            transform-origin: center center;
+          }
+
+          &.middle {
+            width: 0%;
+          }
+
+          &.bottom {
+            transform: translateY(-1.1rem) rotate(-45deg);
+            transform-origin: center center;
+          }
+        }
+      }
+    }
+
+    .link-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .link {
+        cursor: pointer;
+        font-size: 1.25rem;
+        font-family: Raleway;
+        font-weight: bold;
+        margin: 1rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 1rem;
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: #F64E5A;
+          color: white;
+        }
+
+        @media screen and (min-width: $tablet-land){
+          font-size: 1.5rem;
+        }
+
+        &#login {
+          background-color: #AFBDC4;
+
+          &:hover {
+            background-color: white;
+            color: #F64E5A;
+          }
+        }
+
+        &#signin {
+          color: white;
+          background-color: #F64E5A;
+
+          &:hover {
+            background-color: white;
+            color: #F64E5A;
+          }
+        }
+      }
+    }
+  }
+
+  .menu-container {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    padding-top: 7rem;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-height: 0;
+    background-color: white;
+    transition: max-height 0.5s;
+    justify-content: center;
+
+    .link {
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      font-size: 1.25rem;
+      font-family: Raleway;
+      font-weight: bold;
+      color: black;
+      padding: 1rem;
+    }
+
+    &.expanded {
+      max-height: calc(100vh - 7rem);
+      
+      .link {
+        pointer-events: unset;
+        cursor: pointer;
+        opacity: 1;
+
+        margin: 1rem 0;
+        border-radius: 1rem;
+      }
+    }
+  }
+
+  .frame-container {
+    top: 7rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: flex-start;
+    overflow: hidden;
+
+    &.frame-3 {
+      top: calc(200vh);
+
+      .social-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: #FFEC48;
+        justify-content: center;
+
+        .header-container {
+          padding-top: 2rem;
+          display: flex;
+          flex-direction: column;
+
+          @media screen and (min-width: $phone){
+            padding-top: 5rem;
+          }
+
+          .title {
+            color: #F64E5A;
+            font-weight: bold;
+            font-family: Raleway;
+            font-size: 2rem;
+
+            @media screen and (min-width: $phone){
+              font-size: 3rem;
+            }
+          }
+
+          .subtitle {
+            font-size: 1rem;
+
+            @media screen and (min-width: $phone){
+              font-size: 1.5rem;
+            }
+          }
+        }
+
+        .order-circle-container {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+
+          .order-circle {
+            background-color: darkgrey;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            margin: 0.5rem;
+
+            @media screen and (max-width: $phone){
+              width: 1rem;
+              height: 1rem;
+              margin-bottom: 1rem;
+              transition: background-color 0.3s;
+            }
+
+            &.active {
+              background-color: grey;
+            }
+          }
+        }
+
+        .carousel-container {
+          width: 100%;
+          height: 38rem;
+          padding-top: 1rem;
+          display: flex;
+          justify-content: center;
+
+          @media screen and (min-width: $phone){
+            padding-top: 2rem;
+          }
+
+          .card {
+            width: 80vw;
+            height: 60vh;
+            background-color: white;
+            margin: 1rem;
+            -webkit-box-shadow: 0 5px 5px -2px black;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-box-shadow: 0 5px 5px -2px black;  /* Firefox 3.5 - 3.6 */
+            box-shadow: 0 5px 5px -2px black;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+            transition: all 0.3s;
+
+            @media screen and (max-width: $phone) {
+              height: 65vh;
+            }
+
+            @media screen and (min-width: $tablet){
+              width: 20rem;
+              height: 30rem;
+
+              &:hover {
+                width: 25rem;
+                height: 35rem;
+                
+                .image-container {
+                  width: 25rem;
+                  height: 25rem;
+    
+                  img {
+                    height: 100%;
+                  }
+                }
+              }
+            }
+
+            .image-container {
+              width: 100%;
+              height: 80vw;
+              transition: all 0.3s;
+
+              @media screen and (min-width: $phone){
+                width: 20rem;
+                height: 20rem;
+              }
+
+              img {
+                height: 100%;
+              }
+            }
+
+            .description-container {
+              display: flex;
+              flex-direction: column;
+              text-align: left;
+              padding: 1rem;
+              font-size: 1rem;
+
+              .header {
+                transition: all 0.3s;
+                font-size: 1.5rem;
+                font-family: Raleway;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.frame-2 {
+      top: calc(100vh);
+
+      .introduction-container {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+
+        .introduction-overlay {
+          display: flex;
+          height: 100%;
+          width: 100%;
+          flex-direction: column;
+          position: absolute;
+          justify-content: center;
+          align-items: center;
+
+          .introducing {
+            font-family: Source Sans Pro;
+            font-style: italic;
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+            z-index: 1;
+
+            @media screen and (min-width: $tablet-land){
+              font-size: 3rem;
+              line-height: 3rem;
+            }
+
+            @media screen and (min-width: $tablet-med){
+              font-size: 2.5rem;
+              line-height: 2.5rem;
+            }
+          }
+
+          .header {
+            font-family: Raleway;
+            font-weight: bold;
+            font-size: 3.5rem;
+            color: #FF6E2E;
+            line-height: 3.5rem;
+            z-index: 1;
+
+            @media screen and (min-width: $phone){
+              font-size: 10rem;
+              line-height: 10rem;
+            }
+
+            @media screen and (min-width: $tablet-med){
+              font-size: 15rem;
+              line-height: 15rem;
+            }
+
+            @media screen and (min-width: $tablet-land){
+              font-size: 20rem;
+              line-height: 20rem;
+            }
+          }
+        }
+
+        .image-container {
+          padding: 5rem 0 2.5rem 0;
+          width: 100%;
+          height: 75%;
+          position: absolute;
+        
+          img {
+            height: 100%;
+          }
+        }
+
+        .production {
+          font-size: 0.8rem;
+
+          @media screen and (min-width: $tablet-land){
+            font-size: 1.5rem;
+          }
+
+          @media screen and (min-width: $tablet-med){
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+
+    @media screen and (min-width: $tablet-land){
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &.frame-1 {
+      background-color: #F64E5A;
+
+      .get-started-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 5rem;
+        padding-top: 2rem;
+        width: 60%;
+        color: white;
+        text-align: left;
+        font-size: 1.5rem;
+        padding-bottom: 5rem;
+  
+        @media screen and (min-width: $tablet-land){
+          justify-content: flex-start;
+          padding-left: 5%;
+          padding-top: unset;
+          font-size: 2rem;
+        }
+  
+        @media screen and (min-width: $tablet-med){
+          font-size: 2rem;
+        }
+  
+        @media screen and (max-width: $phone){
+          padding-left: 2rem;
+          font-size: 1rem;
+        }
+  
+        .header {
+          font-family: Raleway;
+          font-size: 5rem;
+          font-weight: bold;
+  
+          @media screen and (min-width: $tablet-land){
+            font-size: 6rem;
+          }
+  
+          @media screen and (min-width: $tablet-med){
+            font-size: 6rem;
+          }
+  
+          @media screen and (max-width: $phone){
+            font-size: 3rem;
+          }
+        }
+  
+        .button {
+          cursor: pointer;
+          width: 100%;
+          margin-top: 1rem;
+          color: #F64E5A;
+          padding: 2rem 0;
+          text-align: center;
+          background-color: white;
+          border-radius: 1rem;
+          font-family: Raleway;
+          font-size: 2rem;
+          font-weight: bold;
+          transition: background-color 0.3s, color 0.3s;
+
+          &:hover {
+            background-color: #ff9097;
+            color: white;
+          }
+  
+          @media screen and (max-width: $phone){
+            font-size: 1.25rem;
+            padding: 1rem 0;
+          }
+        }
+      }
+
+      .image-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+  
+        &:before {
+          content: "";
+          pointer-events: none;
+          border-radius: 50%;
+          height: 80rem;
+          width: 80rem;
+          top: 40%;
+          left: 30%;
+          display: flex;
+          position: absolute;
+          justify-content: center;
+          background-color: white;
+  
+          @media screen and (min-width: $tablet-land){
+            height: 80rem;
+            width: 80rem;
+            left: 60%;
+            top: unset;
+          }
+        }
+  
+        .get-started-img {
+          position: absolute;
+          bottom: -5rem;
+          height: 60%;
+          pointer-events: none;
+  
+          @media screen and (min-width: $tablet-land){
+            height: 80%;
+            padding-left: 20%;
+          }
+        }
+      }
+    }
+  }
+}
