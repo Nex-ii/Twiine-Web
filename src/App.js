@@ -3,6 +3,7 @@ import './App.css';
 import { Tablet, TabletLand } from './components/constants/screenWidth';
 import { lockScroll, unlockScroll } from './components/helper/screenLock';
 import LandingPage from './components/LandingPage';
+import Dashboard from './components/Dashboard.js';
 import './styles/main.scss';
 
 class App extends React.Component{
@@ -88,6 +89,7 @@ class App extends React.Component{
     return (
         <div className="App">
           <LandingPage menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} scrollUp={scrollUp} scrollToTop={this.scrollToTop}/>
+          {/* <Dashboard /> */}
         </div>
     );
   }

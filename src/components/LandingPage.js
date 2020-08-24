@@ -66,13 +66,13 @@ class LandingPage extends React.Component {
         <div className="frame-container frame-1">
           <div className="get-started-container">
             <span className="header">
-              INSERT HEADLINE
+              Stay Intertwined.
             </span>
             <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed porttitor sapien.
+              Subscribe to our newsletter so you can receive updates for twiine. 
             </span>
             <div className="button">
-              Get Started
+              Subscribe
             </div>
           </div>
           <div className="image-container">
