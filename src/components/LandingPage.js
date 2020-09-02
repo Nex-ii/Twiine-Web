@@ -2,7 +2,22 @@ import React from 'react'
 import cx from 'classnames'
 
 class LandingPage extends React.Component {
+  constructor() {
+    super() 
+
+    this.state = {
+      email: ""
+    }
+  }
+
+  onSubscribeEmailChange = (e) => {
+    this.setState({
+      email: e.target.value
+    })
+  }
+
   render() {
+    const { email } = this.state
     const { menuOpen, onMenuClick, viewMode, scrollUp, scrollToTop } = this.props
 
     return(
@@ -18,10 +33,13 @@ class LandingPage extends React.Component {
           "expanded": menuOpen
         })}>
           <div className="link">
-            Company
+            About
           </div>
           <div className="link">
             App
+          </div>
+          <div className="link">
+            Business
           </div>
           <div className="link" id="login">
             Log In
@@ -32,6 +50,20 @@ class LandingPage extends React.Component {
         </div>
         <div className="landing-navbar-container">
           <img src="logo.svg" alt="" />
+          {
+            viewMode === "desktop" &&
+            <div className="middle-link-container">
+              <div className="link">
+                About
+              </div>
+              <div className="link">
+                App
+              </div>
+              <div className="link">
+                Business
+              </div>
+            </div>
+          }
           <div className="link-container">
             {
               viewMode !== "desktop" ? 
@@ -47,12 +79,6 @@ class LandingPage extends React.Component {
               </div>
               :
               <React.Fragment>
-                <div className="link">
-                  Company
-                </div>
-                <div className="link">
-                  App
-                </div>
                 <div className="link" id="login">
                   Log In
                 </div>
@@ -71,6 +97,7 @@ class LandingPage extends React.Component {
             <span>
               Subscribe to our newsletter so you can receive updates for twiine. 
             </span>
+            <input className="button input" onChange={this.onSubscribeEmailChange}/>
             <div className="button">
               Subscribe
             </div>
@@ -110,41 +137,50 @@ class LandingPage extends React.Component {
             <div className="carousel-container">
               <div className="card">
                 <div className="image-container">
-                  <img src="logo_symbol.jpg" />
+                  <img src="info.svg" />
                 </div>
                 <div className="description-container">
                   <span className="header">
                     About
                   </span>
                   <span className="description">
-                    Read our mission statement
+                  Read our mission statement and a message from our CEO.
                   </span>
+                </div>
+                <div className="button">
+                  Read More
                 </div>
               </div>
               <div className="card">
                 <div className="image-container">
-                  <img src="logo_symbol.jpg" />
+                  <img src="social.svg" />
                 </div>
                 <div className="description-container">
                   <span className="header">
                     Social Media
                   </span>
                   <span className="description">
-                    First Instagram post: ‘Welcome to Twiine’
+                  Follow us on Instagram for company updates
                   </span>
+                </div>
+                <div className="button">
+                  Read More
                 </div>
               </div>
               <div className="card">
                 <div className="image-container">
-                  <img src="logo_symbol.jpg" />
+                  <img src="business.svg" />
                 </div>
                 <div className="description-container">
                   <span className="header">
                     Business
                   </span>
                   <span className="description">
-                    Partner with us
+                    Grow your business and expand your reach by partnering with us
                   </span>
+                </div>
+                <div className="button">
+                  Read More
                 </div>
               </div>
             </div>

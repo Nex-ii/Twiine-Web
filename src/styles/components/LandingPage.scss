@@ -44,7 +44,7 @@
     height: 5rem;
     width: calc(100% - 4rem);
     justify-content: space-between;
-    background-color: white;
+    background-color: #F64E5A;
     z-index: 10;
 
     .burger-menu {
@@ -91,6 +91,32 @@
       }
     }
 
+    .middle-link-container {
+      display: flex;
+      flex-direction: row;
+
+      .link {
+        cursor: pointer;
+        font-size: 1.25rem;
+        font-family: Raleway;
+        font-weight: bold;
+        margin: 1rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 1rem;
+        transition: all 0.3s;
+        color: white;
+  
+        &:hover {
+          background-color: #F64E5A;
+          color: black;
+        }
+  
+        @media screen and (min-width: $tablet-land){
+          font-size: 1.5rem;
+        }
+      }
+    }
+
     .link-container {
       display: flex;
       flex-direction: row;
@@ -116,20 +142,21 @@
         }
 
         &#login {
-          background-color: #AFBDC4;
+          color: #333333;
+          background-color: #F9F9F9;
 
           &:hover {
-            background-color: white;
+            background-color: #333333;
             color: #F64E5A;
           }
         }
 
         &#signin {
-          color: white;
-          background-color: #F64E5A;
+          color: #F9F9F9;
+          background-color: #333333;
 
           &:hover {
-            background-color: white;
+            background-color: #F9F9F9;
             color: #F64E5A;
           }
         }
@@ -193,7 +220,7 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        background-color: #FFEC48;
+        background-color: #F9F9F9;
         justify-content: center;
 
         .header-container {
@@ -206,7 +233,7 @@
           }
 
           .title {
-            color: #F64E5A;
+            color: #333333;
             font-weight: bold;
             font-family: Raleway;
             font-size: 2rem;
@@ -217,6 +244,7 @@
           }
 
           .subtitle {
+            color: #333333;
             font-size: 1rem;
 
             @media screen and (min-width: $phone){
@@ -255,49 +283,29 @@
           height: 38rem;
           padding-top: 1rem;
           display: flex;
-          justify-content: center;
+          justify-content: space-evenly;
 
           @media screen and (min-width: $phone){
             padding-top: 2rem;
           }
 
           .card {
-            width: 80vw;
+            width: 20rem;
             height: 60vh;
-            background-color: white;
+            background-color: #F9F9F9;
             margin: 1rem;
-            -webkit-box-shadow: 0 5px 5px -2px black;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-            -moz-box-shadow: 0 5px 5px -2px black;  /* Firefox 3.5 - 3.6 */
-            box-shadow: 0 5px 5px -2px black;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
-            transition: all 0.3s;
 
             @media screen and (max-width: $phone) {
               height: 65vh;
             }
 
             @media screen and (min-width: $tablet){
-              width: 20rem;
               height: 30rem;
-
-              &:hover {
-                width: 25rem;
-                height: 35rem;
-                
-                .image-container {
-                  width: 25rem;
-                  height: 25rem;
-    
-                  img {
-                    height: 100%;
-                  }
-                }
-              }
             }
 
             .image-container {
               width: 100%;
               height: 80vw;
-              transition: all 0.3s;
 
               @media screen and (min-width: $phone){
                 width: 20rem;
@@ -312,16 +320,28 @@
             .description-container {
               display: flex;
               flex-direction: column;
-              text-align: left;
+              text-align: center;
               padding: 1rem;
               font-size: 1rem;
+              color: #333333;
 
               .header {
                 transition: all 0.3s;
-                font-size: 1.5rem;
+                font-size: 2rem;
                 font-family: Raleway;
                 font-weight: bold;
+                padding-bottom: 0.5rem;
               }
+            }
+
+            .button {
+              background-color: #FFEC48;
+              width: 100%;
+              border-radius: 2rem;
+              font-size: 1.5rem;
+              font-weight: bold;
+              padding: 1.5rem 0;
+              color: #333333;
             }
           }
         }
@@ -451,7 +471,7 @@
   
         .header {
           font-family: Raleway;
-          font-size: 5rem;
+          font-size: 4rem;
           font-weight: bold;
   
           @media screen and (min-width: $tablet-land){
@@ -485,8 +505,18 @@
             background-color: #ff9097;
             color: white;
           }
+
+          &.input {
+            cursor: text;
+            transition: none;
+
+            &:hover {
+              background-color: white;
+              color: #F64E5A;
+            }
+          }
   
-          @media screen and (max-width: $phone){
+          @media screen and (max-width: $desktop){
             font-size: 1.25rem;
             padding: 1rem 0;
           }
