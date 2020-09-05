@@ -14,6 +14,8 @@ import './styles/main.scss';
 
 import Newsletter from './components/Newsletter.js'
 import { Charts } from './components/Charts.js';
+import Reviews from './components/Reviews';
+import Advertisement from './components/Advertisement';
 
 class App extends React.Component{
   constructor(props) {
@@ -127,7 +129,10 @@ class App extends React.Component{
         */}
 
         {/*<Charts></Charts>*/}
-        <Dashboard></Dashboard>
+        {//<Reviews></Reviews>
+        }
+        {<Advertisement></Advertisement>
+        }
         </div>
       </Router>
     );
