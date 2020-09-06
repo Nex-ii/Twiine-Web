@@ -11,22 +11,57 @@ import Ad from './classes/Ad.js'
 import { v4 as uuidv4 } from 'uuid';
 
 
-function AdPage(props){
-    return (
-        <div className="dashboard-box-container half">
-            <div className = "Ad-wrapper">
-                <img className="avatar" src={avatar} />
-                <span className="box-title">
-                    Hi
-                    <div className = "ad-text">
-                        Hello
-                        {/*props.description*/}
+//function AdPage(props){
+    
+    export class AdPage extends React.Component{
+
+        constructor(props) {
+            super(props)
+            this.state = {
+                show_dropdown: false,
+                photo: props.photo,
+                description: props.description
+            }
+        }
+
+        updateShow = () => {
+            this.setState({
+                show_dropdown: !this.state.show_dropdown
+            })
+        }
+
+        render(){
+            return (
+                <div className="dashboard-box-container half">
+                    <div className = "Ad-wrapper">
+                    <div className = 'drop_down'>
+                        <div className = "ellipsis-wrapper" onClick = {this.updateShow}>
+                            <i className ="fas fa-ellipsis-h ellipsis" ></i>
+                        </div>
+                        <div id = 'drop_container' className = 'dropContainer' style = {{display: this.state.show_dropdown ? 'block' : 'none'}}>
+                            <div className = 'edit drop-content'>
+                            edit
+                            </div>
+                            <div className = 'delete drop-content'>
+                            delete
+                            </div>
+                        </div>
                     </div>
-                </span>
-            </div>
-        </div>
-    )
-}
+                        <span className = "ad-title"></span>
+                        <img className="avatar" src={this.state.photo} />
+                        <span className="box-title">
+                            <div className = "ad-description">
+                                {this.state.description}
+                            </div> 
+                        </span>
+                    </div>
+                </div>
+            )
+        }
+
+    }
+
+//}
 
 
 export default class Advertisement extends React.Component {
@@ -62,7 +97,8 @@ export default class Advertisement extends React.Component {
     addAd = () => {
         let newAd = new Ad;
         console.log(newAd);
-        newAd.setDescription = "Hello";
+        newAd.setDescription = "Two or Four Races of Seven Laps Each at Go-Kart Track (35% Off). 10+ viewed today ... and services. Offer is not eligible for our promo codes or other discounts.";
+        newAd.setPhoto = avatar;
         console.log(newAd.getDescription);
 
         //Push the add into the list of ads
@@ -257,7 +293,7 @@ export default class Advertisement extends React.Component {
                 
                 <div className="dashboard-column">
                     {this.state.advertisements.map((ads) => (
-                        <AdPage key = {uuidv4()} description = {ads.getDescription}></AdPage>
+                        <AdPage key = {uuidv4()} description = {ads.getDescription} photo = {ads.getPhoto}></AdPage>
                     ))}
                 </div>
             </div>

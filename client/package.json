@@ -22,7 +22,6 @@
     "react-slideshow-image": "^1.5.3",
     "uuid": "^8.3.0",
     "victory": "^35.0.8"
-    
   },
   "scripts": {
     "start": "react-scripts start",
