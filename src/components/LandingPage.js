@@ -1,5 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
+import Header from './Header'
+import Footer from './Footer'
 
 class LandingPage extends React.Component {
   constructor() {
@@ -45,35 +47,7 @@ class LandingPage extends React.Component {
             Sign Up
           </div>
         </div>
-        <div className="landing-navbar-container">
-          <img className="navbar-logo" src="logo.svg" alt="" />
-          {
-            viewMode === "desktop" &&
-            <div className="middle-link-container">
-              <div className="link">
-                Download
-              </div>
-              <div className="link">
-                Why Twiine?
-              </div>
-            </div>
-          }
-          <div className="link-container">
-            {
-              viewMode !== "desktop" &&
-              <div className={cx({
-                  "burger-menu": true,
-                  "cross": menuOpen
-                })} 
-                onClick={onMenuClick}
-              >
-                <span className="burger-bar top" />
-                <span className="burger-bar middle" />
-                <span className="burger-bar bottom" />
-              </div>
-            }
-          </div>
-        </div>
+        <Header menuOpen={menuOpen} onMenuClick={onMenuClick} viewMode={viewMode}/>
         <div className="frame-container frame-1">
           <div className="get-started-container">
             <span className="header">
@@ -185,57 +159,7 @@ class LandingPage extends React.Component {
             }
           </div>
         </div>
-        <div className="footer-container">
-          <div className="upper-footer-container">
-            <div className="main-column">
-              <span className="header">
-                Plan your hangouts
-              </span>
-              <img src="instagram.svg" />
-            </div>
-            <div className="link-column-container">
-              <div className="link-column">
-                <span className="header">
-                  Product
-                </span>
-                <span>
-                  Download
-                </span>
-                <span>
-                  Why Twiine?
-                </span>
-              </div>
-              <div className="link-column">
-                <span className="header">
-                  Company
-                </span>
-                <span>
-                  About
-                </span>
-                <span>
-                  Branding
-                </span>
-                <span>
-                  Newsletter
-                </span>
-              </div>
-              <div className="link-column">
-                <span className="header">
-                  Business
-                </span>
-                <span>
-                  Becoming Partners
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="lower-footer-container">
-            <img src="logo.svg" />
-            <span className="sub-text">
-              2020 Nex-ii LLC
-            </span>
-          </div>
-        </div>
+        <Footer />
       </div>
     )
   }
