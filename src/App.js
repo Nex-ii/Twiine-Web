@@ -8,6 +8,7 @@ import './styles/main.scss';
 import Download from './components/Download';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WhyTwiine from './components/WhyTwiine';
+import About from './components/About';
 
 class App extends React.Component{
   constructor(props) {
@@ -93,6 +94,9 @@ class App extends React.Component{
       <div className="App">
         <Router>
           <Switch>
+            <Route path="/about">
+              <About menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} />
+            </Route>
             <Route path="/download">
               <Download menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} />
             </Route>

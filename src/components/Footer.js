@@ -22,17 +22,21 @@ class Footer extends React.Component {
                   Download
                 </span>
               </Link>
-              <span>
-                Why Twiine?
-              </span>
+              <Link to="/whytwiine">
+                <span>
+                  Why Twiine?
+                </span>
+              </Link>
             </div>
             <div className="link-column">
               <span className="header">
                 Company
               </span>
-              <span>
-                About
-              </span>
+              <Link to="/about">
+                <span>
+                  About
+                </span>
+              </Link>
               <span>
                 Branding
               </span>
