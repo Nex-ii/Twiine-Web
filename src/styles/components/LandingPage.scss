@@ -540,6 +540,9 @@
       padding-bottom: 1rem;
 
       .main-column {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         text-align: left;
         width: 100%;
 

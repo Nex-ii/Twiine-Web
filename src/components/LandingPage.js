@@ -191,6 +191,7 @@ class LandingPage extends React.Component {
               <span className="header">
                 Plan your hangouts
               </span>
+              <img src="instagram.svg" />
             </div>
             <div className="link-column-container">
               <div className="link-column">
