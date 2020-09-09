@@ -33,13 +33,10 @@ class LandingPage extends React.Component {
           "expanded": menuOpen
         })}>
           <div className="link">
-            About
+            Download
           </div>
           <div className="link">
-            App
-          </div>
-          <div className="link">
-            Business
+            Why Twiine?
           </div>
           <div className="link" id="login">
             Log In
@@ -49,24 +46,21 @@ class LandingPage extends React.Component {
           </div>
         </div>
         <div className="landing-navbar-container">
-          <img src="logo.svg" alt="" />
+          <img className="navbar-logo" src="logo.svg" alt="" />
           {
             viewMode === "desktop" &&
             <div className="middle-link-container">
               <div className="link">
-                About
+                Download
               </div>
               <div className="link">
-                App
-              </div>
-              <div className="link">
-                Business
+                Why Twiine?
               </div>
             </div>
           }
           <div className="link-container">
             {
-              viewMode !== "desktop" ? 
+              viewMode !== "desktop" &&
               <div className={cx({
                   "burger-menu": true,
                   "cross": menuOpen
@@ -77,30 +71,17 @@ class LandingPage extends React.Component {
                 <span className="burger-bar middle" />
                 <span className="burger-bar bottom" />
               </div>
-              :
-              <React.Fragment>
-                <div className="link" id="login">
-                  Log In
-                </div>
-                <div className="link" id="signin">
-                  Sign Up
-                </div>
-              </React.Fragment>
             }
           </div>
         </div>
         <div className="frame-container frame-1">
           <div className="get-started-container">
             <span className="header">
-              Stay Intertwined.
+              Plan your hangouts
             </span>
-            <span>
-              Subscribe to our newsletter so you can receive updates for twiine. 
+            <span className="sub-header">
+              Whether you’re trying to spend quality time with a handful of friends, you’ve just met someone special, Twiine makes it easy to plan hangouts.
             </span>
-            <input className="button input" onChange={this.onSubscribeEmailChange}/>
-            <div className="button">
-              Subscribe
-            </div>
           </div>
           <div className="image-container">
             <img className="get-started-img" src="getstarted.svg" />
@@ -108,19 +89,29 @@ class LandingPage extends React.Component {
         </div>
         <div className="frame-container frame-2">
           <div className="introduction-container">
-            <div className="introduction-overlay">
-              <span className="introducing">
-                Introducing
-              </span>
-              <span className="header">
-                twiine
-              </span>
-              <div className="image-container">
-                <img src="phone.png"/>
+            <img className="introduction-header" src="introduction.svg" />
+            <div className="introduction-box-container">
+              <img src="mobile.svg" />
+              <div className="introduction-column">
+                <div className="introduction-box">
+                  <img src="group.svg" />
+                  <span className="header">
+                    Planning made easier
+                  </span>
+                  <span>
+                    Twiine allows you to plan hangouts. Invite your friends, colleagues, and lovers to new and old places.
+                  </span>
+                </div>
+                <div className="introduction-box">
+                  <img src="map.svg" />
+                  <span className="header">
+                    Discover new places near you
+                  </span>
+                  <span>
+                    Twiine recommends new places for you to enjoy with your friends based on your preferences. 
+                  </span>
+                </div>
               </div>
-              <span className="production">
-                CURRENTLY IN PRODUCTION
-              </span>
             </div>
           </div>
         </div>
@@ -144,7 +135,7 @@ class LandingPage extends React.Component {
                     About
                   </span>
                   <span className="description">
-                  Read our mission statement and a message from our CEO.
+                    Read our mission statement and a message from our CEO.
                   </span>
                 </div>
                 <div className="button">
@@ -192,6 +183,56 @@ class LandingPage extends React.Component {
                   <i className="order-circle" id="3"/>
                 </div>
             }
+          </div>
+        </div>
+        <div className="footer-container">
+          <div className="upper-footer-container">
+            <div className="main-column">
+              <span className="header">
+                Plan your hangouts
+              </span>
+            </div>
+            <div className="link-column-container">
+              <div className="link-column">
+                <span className="header">
+                  Product
+                </span>
+                <span>
+                  Download
+                </span>
+                <span>
+                  Why Twiine?
+                </span>
+              </div>
+              <div className="link-column">
+                <span className="header">
+                  Company
+                </span>
+                <span>
+                  About
+                </span>
+                <span>
+                  Branding
+                </span>
+                <span>
+                  Newsletter
+                </span>
+              </div>
+              <div className="link-column">
+                <span className="header">
+                  Business
+                </span>
+                <span>
+                  Becoming Partners
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="lower-footer-container">
+            <img src="logo.svg" />
+            <span className="sub-text">
+              2020 Nex-ii LLC
+            </span>
           </div>
         </div>
       </div>
