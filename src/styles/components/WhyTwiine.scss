@@ -1,0 +1,58 @@
+.why-twiine-container {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  font-family: Raleway;
+
+  .why-container {
+    margin: 0 3rem;
+    padding-top: 12rem;
+    display: flex;
+    flex-direction: column;
+
+    .header {
+      color: black;
+      font-size: 3rem;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .why-container-row {
+      display: flex;
+      flex-direction: row;
+      padding-top: 4rem;
+
+      .why-column {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: left;
+        margin-right: 10%;
+        font-size: 1.5rem;
+
+        .header {
+          color: #F64E5A;
+          font-size: 2rem;
+          padding-bottom: 1rem;
+        }
+      }
+    }
+  }
+
+  .how-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10rem;
+
+    .header {
+      font-size: 3rem;
+      font-weight: bold;
+      padding-bottom: 2rem;
+    }
+
+    .sub-title {
+      padding: 2rem 0;
+      font-size: 1.5rem;
+      margin: 0 30%;
+    }
+  }
+}

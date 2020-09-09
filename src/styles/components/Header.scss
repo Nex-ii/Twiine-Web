@@ -12,6 +12,10 @@
     background-color: #333333;
   }
 
+  &.light {
+    background-color: #F9F9F9;
+  }
+
   .navbar-logo {
     position: absolute;
     top: 2rem;
@@ -96,6 +100,18 @@
           &:hover {
             background-color: #333333;
             color: black;
+          }
+        }
+      }
+
+      &.light {
+        a {
+          text-decoration: none;
+          color: #333333;
+
+          &:hover {
+            background-color: #f9f9f9;
+            color: #F64E5A;
           }
         }
       }

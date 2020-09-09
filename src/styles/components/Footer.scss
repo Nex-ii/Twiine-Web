@@ -1,14 +1,13 @@
 .footer-container {
-  // position: absolute;
   bottom: 0;
   background-color: #333333;
-  width: 100%;
+  width: calc(100% - 4rem);
   color: white;
+  padding: 2rem;
 
   .upper-footer-container {
     display: flex;
     flex-direction: row;
-    margin: 2rem;
     border-bottom: solid 1px #F64E5A;
     padding-bottom: 1rem;
 
@@ -53,8 +52,8 @@
   .lower-footer-container {
     display: flex;
     flex-direction: row;
-    margin: 2rem;
     align-items: center;
+    padding-top: 1rem;
 
     .sub-text {
       padding-left: 1rem;
