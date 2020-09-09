@@ -5,6 +5,8 @@ import { lockScroll, unlockScroll } from './components/helper/screenLock';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard.js';
 import './styles/main.scss';
+import Download from './components/Download';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends React.Component{
   constructor(props) {
@@ -87,10 +89,18 @@ class App extends React.Component{
   render() {
     const { menuOpen, viewMode, scrollUp } = this.state
     return (
-        <div className="App">
-          <LandingPage menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} scrollUp={scrollUp} scrollToTop={this.scrollToTop}/>
-          {/* <Dashboard /> */}
-        </div>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route path="/download">
+              <Download menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} />
+            </Route>
+            <Route path="/">
+              <LandingPage menuOpen={menuOpen} viewMode={viewMode} onMenuClick={this.onMenuClick} scrollUp={scrollUp} scrollToTop={this.scrollToTop}/>
+            </Route>
+          </Switch>
+        </Router>
+      </div>
     );
   }
 }
