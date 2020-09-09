@@ -4,27 +4,37 @@ import { Link } from 'react-router-dom'
 
 class Header extends React.Component {
   render() {
-    const { menuOpen, onMenuClick, viewMode, darkTheme = false } = this.props
+    const { menuOpen, onMenuClick, viewMode, darkTheme = false, lightTheme = false } = this.props
 
     return(
       <div className={cx({
           "dark": darkTheme,
+          "light": lightTheme,
           "navbar-container": true
         })}>
-        <img className="navbar-logo" src="logo.svg" alt="" />
+        <Link to="/">
+          <img className="navbar-logo" src={`logo${lightTheme ? 'Black' : ''}.svg`} alt="" />
+        </Link>
         {
           viewMode === "desktop" &&
           <div className="middle-link-container">
             <div className={cx({
               "link": true,
+              "light": lightTheme,
               "dark": darkTheme
             })}>
               <Link to="/download">
                 Download
               </Link>
             </div>
-            <div className="link">
-              Why Twiine?
+            <div className={cx({
+              "link": true,
+              "light": lightTheme,
+              "dark": darkTheme
+            })}>
+              <Link to="/whytwiine">
+                Why Twiine
+              </Link>
             </div>
           </div>
         }
