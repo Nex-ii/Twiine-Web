@@ -43,9 +43,15 @@
     padding: 1rem 2rem;
     height: 5rem;
     width: calc(100% - 4rem);
-    justify-content: space-between;
-    background-color: white;
+    justify-content: center;
+    background-color: #F64E5A;
     z-index: 10;
+
+    .navbar-logo {
+      position: absolute;
+      top: 2rem;
+      left: 2.5rem;
+    }
 
     .burger-menu {
       cursor: pointer;
@@ -91,6 +97,32 @@
       }
     }
 
+    .middle-link-container {
+      display: flex;
+      flex-direction: row;
+
+      .link {
+        cursor: pointer;
+        font-size: 1.25rem;
+        font-family: Raleway;
+        font-weight: bold;
+        margin: 1rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 1rem;
+        transition: all 0.3s;
+        color: white;
+  
+        &:hover {
+          background-color: #F64E5A;
+          color: black;
+        }
+  
+        @media screen and (min-width: $tablet-land){
+          font-size: 1.5rem;
+        }
+      }
+    }
+
     .link-container {
       display: flex;
       flex-direction: row;
@@ -116,20 +148,21 @@
         }
 
         &#login {
-          background-color: #AFBDC4;
+          color: #333333;
+          background-color: #F9F9F9;
 
           &:hover {
-            background-color: white;
+            background-color: #333333;
             color: #F64E5A;
           }
         }
 
         &#signin {
-          color: white;
-          background-color: #F64E5A;
+          color: #F9F9F9;
+          background-color: #333333;
 
           &:hover {
-            background-color: white;
+            background-color: #F9F9F9;
             color: #F64E5A;
           }
         }
@@ -186,14 +219,14 @@
     overflow: hidden;
 
     &.frame-3 {
-      top: calc(200vh);
+      top: calc(280vh);
 
       .social-container {
         width: 100%;
         height: 100%;
         display: flex;
         flex-direction: column;
-        background-color: #FFEC48;
+        background-color: #F9F9F9;
         justify-content: center;
 
         .header-container {
@@ -206,7 +239,7 @@
           }
 
           .title {
-            color: #F64E5A;
+            color: #333333;
             font-weight: bold;
             font-family: Raleway;
             font-size: 2rem;
@@ -217,6 +250,7 @@
           }
 
           .subtitle {
+            color: #333333;
             font-size: 1rem;
 
             @media screen and (min-width: $phone){
@@ -255,49 +289,29 @@
           height: 38rem;
           padding-top: 1rem;
           display: flex;
-          justify-content: center;
+          justify-content: space-evenly;
 
           @media screen and (min-width: $phone){
             padding-top: 2rem;
           }
 
           .card {
-            width: 80vw;
+            width: 20rem;
             height: 60vh;
-            background-color: white;
+            background-color: #F9F9F9;
             margin: 1rem;
-            -webkit-box-shadow: 0 5px 5px -2px black;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-            -moz-box-shadow: 0 5px 5px -2px black;  /* Firefox 3.5 - 3.6 */
-            box-shadow: 0 5px 5px -2px black;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
-            transition: all 0.3s;
 
             @media screen and (max-width: $phone) {
               height: 65vh;
             }
 
             @media screen and (min-width: $tablet){
-              width: 20rem;
               height: 30rem;
-
-              &:hover {
-                width: 25rem;
-                height: 35rem;
-                
-                .image-container {
-                  width: 25rem;
-                  height: 25rem;
-    
-                  img {
-                    height: 100%;
-                  }
-                }
-              }
             }
 
             .image-container {
               width: 100%;
               height: 80vw;
-              transition: all 0.3s;
 
               @media screen and (min-width: $phone){
                 width: 20rem;
@@ -312,16 +326,29 @@
             .description-container {
               display: flex;
               flex-direction: column;
-              text-align: left;
+              text-align: center;
               padding: 1rem;
               font-size: 1rem;
+              color: #333333;
 
               .header {
                 transition: all 0.3s;
-                font-size: 1.5rem;
+                font-size: 2rem;
                 font-family: Raleway;
                 font-weight: bold;
+                padding-bottom: 0.5rem;
               }
+            }
+
+            .button {
+              cursor: pointer;
+              border: solid 2px #F64E5A;
+              width: 100%;
+              border-radius: 2rem;
+              font-size: 1.5rem;
+              font-weight: bold;
+              padding: 1.5rem 0;
+              color: #F64E5A;
             }
           }
         }
@@ -330,96 +357,55 @@
 
     &.frame-2 {
       top: calc(100vh);
+      height: 180vh;
 
       .introduction-container {
         width: 100%;
         height: 100%;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
 
-        .introduction-overlay {
-          display: flex;
-          height: 100%;
-          width: 100%;
-          flex-direction: column;
-          position: absolute;
+        .introduction-header {
+          padding-bottom: 5rem;
+        }
+
+        .introduction-box-container {
           justify-content: center;
-          align-items: center;
+          display: flex;
+          flex-direction: row;
+          padding: 0 15%;
 
-          .introducing {
-            font-family: Source Sans Pro;
-            font-style: italic;
-            font-size: 1.25rem;
-            line-height: 1.5rem;
-            z-index: 1;
+          .introduction-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
 
-            @media screen and (min-width: $tablet-land){
-              font-size: 3rem;
-              line-height: 3rem;
+            .introduction-box {
+              display: flex;
+              flex-direction: column;
+              width: 55%;
+  
+              span {
+                font-size: 1.5rem;
+              }
+  
+              .header {
+                font-weight: bold;
+                font-size: 2.5rem;
+              }
             }
-
-            @media screen and (min-width: $tablet-med){
-              font-size: 2.5rem;
-              line-height: 2.5rem;
-            }
-          }
-
-          .header {
-            font-family: Raleway;
-            font-weight: bold;
-            font-size: 3.5rem;
-            color: #FF6E2E;
-            line-height: 3.5rem;
-            z-index: 1;
-
-            @media screen and (min-width: $phone){
-              font-size: 10rem;
-              line-height: 10rem;
-            }
-
-            @media screen and (min-width: $tablet-med){
-              font-size: 15rem;
-              line-height: 15rem;
-            }
-
-            @media screen and (min-width: $tablet-land){
-              font-size: 20rem;
-              line-height: 20rem;
-            }
-          }
-        }
-
-        .image-container {
-          padding: 5rem 0 2.5rem 0;
-          width: 100%;
-          height: 75%;
-          position: absolute;
-        
-          img {
-            height: 100%;
-          }
-        }
-
-        .production {
-          font-size: 0.8rem;
-
-          @media screen and (min-width: $tablet-land){
-            font-size: 1.5rem;
-          }
-
-          @media screen and (min-width: $tablet-med){
-            font-size: 1.25rem;
           }
         }
       }
     }
 
-    @media screen and (min-width: $tablet-land){
-      flex-direction: row;
-      align-items: center;
-    }
 
     &.frame-1 {
       background-color: #F64E5A;
+      flex-direction: column;
 
       .get-started-container {
         display: flex;
@@ -432,26 +418,28 @@
         text-align: left;
         font-size: 1.5rem;
         padding-bottom: 5rem;
+        text-align: center;
+        align-self: center;
   
-        @media screen and (min-width: $tablet-land){
-          justify-content: flex-start;
-          padding-left: 5%;
-          padding-top: unset;
-          font-size: 2rem;
-        }
+        // @media screen and (min-width: $tablet-land){
+        //   justify-content: flex-start;
+        //   padding-left: 5%;
+        //   padding-top: unset;
+        //   font-size: 2rem;
+        // }
   
-        @media screen and (min-width: $tablet-med){
-          font-size: 2rem;
-        }
+        // @media screen and (min-width: $tablet-med){
+        //   font-size: 2rem;
+        // }
   
-        @media screen and (max-width: $phone){
-          padding-left: 2rem;
-          font-size: 1rem;
-        }
+        // @media screen and (max-width: $phone){
+        //   padding-left: 2rem;
+        //   font-size: 1rem;
+        // }
   
         .header {
           font-family: Raleway;
-          font-size: 5rem;
+          font-size: 4rem;
           font-weight: bold;
   
           @media screen and (min-width: $tablet-land){
@@ -465,6 +453,10 @@
           @media screen and (max-width: $phone){
             font-size: 3rem;
           }
+        }
+
+        .sub-header {
+          padding: 2rem 0;
         }
   
         .button {
@@ -485,8 +477,18 @@
             background-color: #ff9097;
             color: white;
           }
+
+          &.input {
+            cursor: text;
+            transition: none;
+
+            &:hover {
+              background-color: white;
+              color: #F64E5A;
+            }
+          }
   
-          @media screen and (max-width: $phone){
+          @media screen and (max-width: $desktop){
             font-size: 1.25rem;
             padding: 1rem 0;
           }
@@ -507,32 +509,78 @@
           border-radius: 50%;
           height: 80rem;
           width: 80rem;
-          top: 40%;
-          left: 30%;
+          top: 35%;
           display: flex;
           position: absolute;
           justify-content: center;
           background-color: white;
-  
-          @media screen and (min-width: $tablet-land){
-            height: 80rem;
-            width: 80rem;
-            left: 60%;
-            top: unset;
-          }
         }
   
         .get-started-img {
           position: absolute;
-          bottom: -5rem;
           height: 60%;
           pointer-events: none;
-  
-          @media screen and (min-width: $tablet-land){
-            height: 80%;
-            padding-left: 20%;
+        }
+      }
+    }
+  }
+
+  .footer-container {
+    position: absolute;
+    top: 380vh;
+    background-color: #333333;
+    width: 100%;
+    color: white;
+
+    .upper-footer-container {
+      display: flex;
+      flex-direction: row;
+      margin: 2rem;
+      border-bottom: solid 1px #F64E5A;
+      padding-bottom: 1rem;
+
+      .main-column {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+
+        .header {
+          color: #F64E5A;
+          font-size: 2rem;
+          font-weight: bold;
+        }
+      }
+
+      .link-column-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+        font-size: 1.25rem;
+
+        .link-column {
+          padding-right: 10rem;
+          display: flex;
+          flex-direction: column;
+
+          .header {
+            color: #F64E5A;
           }
         }
+      }
+    }
+
+    .lower-footer-container {
+      display: flex;
+      flex-direction: row;
+      margin: 2rem;
+      align-items: center;
+
+      .sub-text {
+        padding-left: 1rem;
+        font-size: 1.5rem;
       }
     }
   }
